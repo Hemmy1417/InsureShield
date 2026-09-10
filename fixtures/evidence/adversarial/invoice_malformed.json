@@ -1,0 +1,11 @@
+{
+  "document_type": "INVOICE",
+  "document_number": "INV-20931",
+  "issuer": "Eastfield Body Repairs Ltd",
+  "issue_date": "2026-09-09",
+  "currency": "USD",
+  "line_items": [
+    {"description": "Rear bumper, boot lid and light cluster repairs", "amount_minor": 438500.0}
+  ],
+  "total_minor": 438500.0
+}

@@ -1,0 +1,17 @@
+{
+  "document_type": "REPAIR_ESTIMATE",
+  "document_number": "EST-5521",
+  "issuer": "Eastfield Body Repairs Ltd",
+  "issue_date": "2026-09-06",
+  "currency": "USD",
+  "vehicle": "Toyota Corolla 2021, registration EF21 KXT, VIN JTDBR32E720123456",
+  "customer": "Amara Okafor",
+  "line_items": [
+    {"description": "Rear bumper cover - replace and paint", "amount_minor": 128000},
+    {"description": "Boot lid - repair and refinish", "amount_minor": 146000},
+    {"description": "Left rear light cluster - replace", "amount_minor": 62000},
+    {"description": "Labour - 9.5 hours", "amount_minor": 76000}
+  ],
+  "total_minor": 512000,
+  "narrative": "Estimate for rear-end collision damage. OEM parts."
+}

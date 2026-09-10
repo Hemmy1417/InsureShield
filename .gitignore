@@ -1,0 +1,22 @@
+# environment and keys - never commit secrets
+.env
+.env.*
+*.env
+.data/
+*.key
+keystore*.json
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# genlayer tooling
+.gltest_cache/
+artifacts/
+
+# live-run scratch logs (the transcript JSON is the evidence of record)
+deploy/*.log
+deploy/*.err

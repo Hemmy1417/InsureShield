@@ -1,0 +1,17 @@
+{
+  "document_type": "REPAIR_ESTIMATE",
+  "document_number": "EST-5588",
+  "issuer": "Eastfield Body Repairs Ltd",
+  "issue_date": "2026-09-08",
+  "currency": "USD",
+  "vehicle": "Toyota Corolla 2021, registration EF21 KXT, VIN JTDBR32E720123456",
+  "customer": "Amara Okafor",
+  "line_items": [
+    {"description": "Front bumper cover - replace and paint", "amount_minor": 139000},
+    {"description": "Bonnet - repair and refinish", "amount_minor": 118000},
+    {"description": "Right headlamp assembly - replace", "amount_minor": 97000},
+    {"description": "Labour - 8 hours", "amount_minor": 64000}
+  ],
+  "total_minor": 418000,
+  "narrative": "Estimate for front-end damage from an animal strike."
+}

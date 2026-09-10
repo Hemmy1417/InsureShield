@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+# Evidence fixtures are hash-bound: git must never rewrite their bytes.
+# Kept last so it overrides the patterns above.
+fixtures/** -text

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="InsureShield">
+  <title>InsureShield</title>
+  <path d="M80 10 L136 30 V76 C136 110 112 136 80 150 C48 136 24 110 24 76 V30 Z" fill="#0f5e6e"/>
+  <path d="M80 22 L125 38 V76 C125 104 106 125 80 137 C54 125 35 104 35 76 V38 Z" fill="none" stroke="#7dd3c8" stroke-width="3"/>
+  <rect x="54" y="48" width="40" height="52" rx="4" fill="#f4efe6"/>
+  <line x1="61" y1="60" x2="87" y2="60" stroke="#0f5e6e" stroke-width="3" stroke-linecap="round"/>
+  <line x1="61" y1="70" x2="87" y2="70" stroke="#0f5e6e" stroke-width="3" stroke-linecap="round"/>
+  <line x1="61" y1="80" x2="78" y2="80" stroke="#0f5e6e" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="96" cy="96" r="15" fill="none" stroke="#f2a93b" stroke-width="6"/>
+  <line x1="107" y1="107" x2="119" y2="119" stroke="#f2a93b" stroke-width="7" stroke-linecap="round"/>
+</svg>

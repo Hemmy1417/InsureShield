@@ -1,0 +1,46 @@
+# Two jobs. The required gate is preflight + Direct Mode + the GenVM linter;
+# the integration job reports hosted-StudioNet health without letting
+# network weather block development (real consensus rounds take minutes and
+# share a rate-limited public network).
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  required:
+    name: preflight + direct tests + genvm-lint check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/genvm-linter
+            ~/.cache/gltest-direct
+          key: genvm-bundle-v0.3.0-rc7
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements-test.txt
+      - run: python scripts/preflight.py
+      # gltest 0.29.2 asks for an asset name the current GenVM releases no
+      # longer publish; seed both caches with the verified bundle first.
+      - run: python scripts/fetch_genvm_bundle.py
+      - run: python -m pytest tests/direct -q
+      - run: genvm-lint check contracts/insureshield.py --json
+
+  integration:
+    name: integration on StudioNet (non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements-test.txt
+      - run: python -m pytest tests/integration -v

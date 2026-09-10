@@ -1,0 +1,18 @@
+{
+  "document_type": "INVOICE",
+  "document_number": "INV-21002",
+  "issuer": "Eastfield Body Repairs Ltd",
+  "issue_date": "2026-09-10",
+  "currency": "USD",
+  "vehicle": "Toyota Corolla 2021, registration EF21 KXT, VIN JTDBR32E720123456",
+  "customer": "Amara Okafor",
+  "line_items": [
+    {"description": "Front bumper cover - replaced and painted", "amount_minor": 139000},
+    {"description": "Bonnet - repaired and refinished", "amount_minor": 118000},
+    {"description": "Right headlamp assembly - replaced", "amount_minor": 97000},
+    {"description": "Headlamp aim and front sensor recalibration", "amount_minor": 21000},
+    {"description": "Labour - 8.5 hours", "amount_minor": 68000}
+  ],
+  "total_minor": 443000,
+  "narrative": "Repairs completed 2026-09-10 following an animal strike."
+}

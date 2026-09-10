@@ -1,0 +1,18 @@
+{
+  "document_type": "INVOICE",
+  "document_number": "INV-20931",
+  "issuer": "Eastfield Body Repairs Ltd",
+  "issue_date": "2026-09-09",
+  "currency": "USD",
+  "vehicle": "Toyota Corolla 2021, registration EF21 KXT, VIN JTDBR32E720123456",
+  "customer": "Amara Okafor",
+  "line_items": [
+    {"description": "Rear bumper cover - replaced and painted", "amount_minor": 128000},
+    {"description": "Boot lid - repaired and refinished", "amount_minor": 146000},
+    {"description": "Left rear light cluster - replaced", "amount_minor": 62000},
+    {"description": "Rear parking sensor bracket - replaced (found on strip-down)", "amount_minor": 18500},
+    {"description": "Labour - 10.5 hours", "amount_minor": 84000}
+  ],
+  "total_minor": 438500,
+  "narrative": "Repairs completed 2026-09-09 following a rear-end collision."
+}
