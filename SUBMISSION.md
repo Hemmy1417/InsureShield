@@ -37,6 +37,8 @@ asserted, it says so.
 | `python -m pytest tests/direct -q` | 341 collected, 341 passed, 0 failed, 0 skipped, about 44 s; Python 3.12.2, genlayer-test 0.29.2, pickling checks on for every test |
 | `python scripts/mutation_check.py` (on the deployed contract) | 110 mutants: 109 killed, 1 survived; the survivor is an equivalent mutant (a redundant eligibility check) documented in the script; record `deploy/mutation_sweep_aa01aa2.txt` |
 | `INSURESHIELD_LIVE_WRITES=1 python -m pytest tests/integration -v` (against the deployment) | 4 passed in 237.83 s (without the variable, as in CI: the 3 read-only checks) |
+| clean clone of `dfea418`, fresh virtualenv from `requirements-test.txt` | preflight 27/0, 341 direct passed, `genvm-lint check` ok, integration 3 passed 1 skipped, no untracked files (`docs/DEPLOYMENT.md`) |
+| CI (GitHub Actions, ubuntu, cold runner cache) | required job green: preflight, Direct Mode, `genvm-lint check` |
 | `python scripts/live_scenarios.py` (on the deployment) | 20 on-chain adversarial tests, 20 safety properties held with real models; rule-change evaluation behaved as asserted; 3 real claims resolved as asserted; 4 refusals |
 
 ## What the live run shows

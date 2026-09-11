@@ -177,6 +177,25 @@ test, decided `SUSPICIOUS` by code with all six documents fetched and
 hash-verified by every node). It created its own policy on the canonical
 deployment with a fresh account. Without `INSURESHIELD_LIVE_WRITES=1` (as in CI) only the three read-only checks run.
 
+## Clean-clone reproducibility
+
+A fresh clone of `dfea418` into a new directory, with a fresh virtualenv
+holding only the pins in `requirements-test.txt` installed from PyPI (so no
+locally patched package can take part):
+
+```text
+python scripts/fetch_genvm_bundle.py      genvm bundle v0.3.0-rc7 cached and complete
+python scripts/preflight.py               27 checks, 0 failed
+python -m pytest tests/direct -q          341 passed in 57.22s
+genvm-lint check contracts/insureshield.py --json   {"ok":true, ... "methods":25 ...}
+python -m pytest tests/integration -q     3 passed, 1 skipped (writes are opt-in)
+git status --short --ignored              only __pycache__ directories
+```
+
+The GenVM runner bundle was already cached on that machine; the cold-cache
+path (download, verify, seed both caches) runs on every CI job, on a fresh
+Ubuntu runner, and passes.
+
 ## Disposable deployments
 
 Kept separate from the canonical one and never referenced as it:
