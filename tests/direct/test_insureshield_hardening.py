@@ -964,11 +964,16 @@ def test_shapes_never_ground_what_the_eligible_documents_do_not_say(
 def test_an_overlong_quote_is_cut_at_a_word_and_still_grounded(mod):
     from tests.direct.support import file_bytes
     text = file_bytes("evidence/legit/incident_report.txt").decode("utf-8")
-    start = text.index("Account:")
+    start = text.index("Vehicle 1 was stationary")
     long_quote = " ".join(text[start:start + 400].split())
+    # the 240-character limit falls inside a word, so a raw cut would leave a
+    # partial word that the document does not contain
+    assert long_quote[239].isalnum() and long_quote[240].isalnum()
+    assert mod._quote_grounded({"evidence_id": "E1", "text": long_quote[:240]},
+                               ["E1"], {"E1": text}) is False
     kept = mod._ground_quote(long_quote, "E1", ["E1"], {"E1": text})
     assert kept is not None and len(kept["text"]) <= 240
-    assert kept["text"].startswith("Account: Vehicle 1 was stationary")
+    assert kept["text"].startswith("Vehicle 1 was stationary")
 
 
 def test_state_aliases(mod):
