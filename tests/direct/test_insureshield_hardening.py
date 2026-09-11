@@ -274,9 +274,8 @@ def resolve_with_answer(shield, direct_vm, policy_id, answer, case_id="L-01"):
 @pytest.mark.parametrize("answer", [
     "The claim looks fine to me.",
     "[]",
-    json.dumps({"criteria": {}, "exclusions": {}}),
-    json.dumps({"criteria": [], "exclusions": {}, "indicators": {}}),
     json.dumps({"verdict": "VALID"}),
+    json.dumps({"a": {"criteria": {}}, "b": {"indicators": {}}}),
 ])
 def test_unusable_model_output_is_inconclusive(shield, direct_vm, policy_id, answer):
     receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
@@ -979,3 +978,31 @@ def test_state_aliases(mod):
     state, ids, quotes, _note = mod._normalize_answer(raw, "C3", mod.CRITERION_STATES,
                                                       ["E1"], texts)
     assert (state, ids) == ("SATISFIED", ["E1"]) and len(quotes) == 1
+
+
+# -- answer envelopes ---------------------------------------------------------------
+
+@pytest.mark.parametrize("wrap", [
+    lambda a: {"answer": a},                                   # wrapper object
+    lambda a: [a],                                             # one-element list
+    lambda a: "Here is my assessment:\n" + json.dumps(a) + "\nThanks.",
+    lambda a: dict(a, criteria=[dict(v, id=k) for k, v in a["criteria"].items()],
+                   exclusions=[dict(v, id=k) for k, v in a["exclusions"].items()],
+                   indicators=[dict(v, id=k) for k, v in a["indicators"].items()]),
+])
+def test_answer_envelopes_are_unwrapped(shield, direct_vm, policy_id, wrap):
+    answer = wrap(panel_answer(case("L-01")))
+    receipt = resolve_with_answer(shield, direct_vm, policy_id,
+                                  answer if isinstance(answer, str) else json.dumps(answer))
+    assert receipt["panel_state"] == "ASSESSED"
+    assert receipt["verdict"] == "VALID"
+
+
+def test_a_missing_section_leaves_its_subjects_undecided(shield, direct_vm, policy_id):
+    answer = panel_answer(case("L-01"))
+    del answer["exclusions"]
+    receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
+    assert receipt["panel_state"] == "ASSESSED"
+    assert finding(receipt, "exclusions", "X1")["state"] == "UNVERIFIABLE"
+    assert receipt["verdict"] == "INCONCLUSIVE"
+    assert receipt["failure_class"] == "INSUFFICIENT_EVIDENCE"

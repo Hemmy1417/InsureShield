@@ -188,14 +188,18 @@ INDICATOR_QUESTIONS = {
     "DAMAGE_MISMATCH":
         "Is the damage described in the photo log inconsistent with the "
         "repairs that are invoiced or estimated (for example rear damage "
-        "photographed while front repairs are billed)?",
+        "photographed while front repairs are billed)? Every inconsistency "
+        "between damage and repairs belongs here and nowhere else.",
     "NARRATIVE_CONTRADICTION":
-        "Do two documents give incompatible accounts of the incident itself: "
-        "its date, time, place, the item involved, the parties, or the "
-        "sequence of events?",
+        "Leaving aside witness statements and the damage-versus-repairs "
+        "comparison (each has its own question), do two documents give "
+        "incompatible accounts of the incident itself: its date, time, "
+        "place, the item involved, the parties, or the sequence of events?",
     "WITNESS_CONFLICT":
         "Does a witness statement contradict another witness statement or "
-        "the incident report on a material fact of the incident?",
+        "any other document on a material fact of the incident? Every "
+        "contradiction that involves a witness statement belongs here and "
+        "nowhere else.",
 }
 
 QUOTE_RULES = {
@@ -1372,6 +1376,47 @@ def _panel_blob(ctx: dict, rows: list, texts: dict, facts: list,
     }
 
 
+def _section(value) -> dict:
+    """One answer section as {subject_id: entry}. A list of entries that
+    carry their own "id" is accepted; anything else is empty."""
+    if isinstance(value, dict):
+        return value
+    out = {}
+    if isinstance(value, list):
+        for entry in value:
+            if isinstance(entry, dict) and isinstance(entry.get("id"), str) \
+                    and entry["id"] not in out:
+                out[entry["id"]] = entry
+    return out
+
+
+def _panel_sections(raw):
+    """The model answer's three sections, or None when it contains none.
+    A JSON object inside surrounding text, a one-element list, or a wrapper
+    object holding the sections one level down are unwrapped. A missing or
+    malformed section is empty, so its subjects stay undecided - the answer
+    is never completed on the model's behalf."""
+    names = ("criteria", "exclusions", "indicators")
+    if isinstance(raw, str):
+        first = raw.find("{")
+        last = raw.rfind("}")
+        try:
+            raw = json.loads(raw[first:last + 1]) if 0 <= first < last else None
+        except Exception:
+            raw = None
+    if isinstance(raw, list) and len(raw) == 1:
+        raw = raw[0]
+    if not isinstance(raw, dict):
+        return None
+    if not any(n in raw for n in names):
+        inner = [v for v in raw.values()
+                 if isinstance(v, dict) and any(n in v for n in names)]
+        if len(inner) != 1:
+            return None
+        raw = inner[0]
+    return {n: _section(raw.get(n)) for n in names}
+
+
 # == nondeterministic procedure: run verbatim by the leader and by every ====
 # == validator's reproduction ================================================
 
@@ -1448,18 +1493,13 @@ def _node_round(ctx: dict) -> tuple:
                 response_format="json")
         except Exception:
             raise gl.vm.UserError(ERROR_TRANSIENT + " the model call failed")
-        if isinstance(raw, str):
-            try:
-                raw = json.loads(raw)
-            except Exception:
-                raw = None
-        if isinstance(raw, dict) and isinstance(raw.get("criteria"), dict) \
-                and isinstance(raw.get("exclusions"), dict) \
-                and isinstance(raw.get("indicators"), dict):
+        sections = _panel_sections(raw)
+        if sections is not None:
             panel_state = PANEL_ASSESSED
             criteria, exclusions, indicators = _panel_findings(
-                raw, plan, _kind_of(ctx), texts)
+                sections, plan, _kind_of(ctx), texts)
         else:
+            print("[MODEL_OUTPUT_INVALID] " + repr(raw)[:160])
             panel_state = PANEL_INVALID
             criteria, exclusions, indicators = _skipped_findings(plan, BY_PANEL)
     payload = {

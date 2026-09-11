@@ -206,7 +206,7 @@
       "panel": {
         "base": "LEGIT",
         "indicators": {
-          "NARRATIVE_CONTRADICTION": {"state": "PRESENT", "evidence_ids": ["E1", "E5"], "quotes": [{"evidence_id": "E5", "text": "On Tuesday 1 September 2026, in the morning"}, {"evidence_id": "E1", "text": "Date of collision: 2026-09-05"}], "note": "Witness and police report give different dates."},
+          "NARRATIVE_CONTRADICTION": {"state": "ABSENT", "evidence_ids": [], "quotes": [], "note": "Covered by WITNESS_CONFLICT."},
           "WITNESS_CONFLICT": {"state": "PRESENT", "evidence_ids": ["E1", "E5"], "quotes": [{"evidence_id": "E5", "text": "On Tuesday 1 September 2026, in the morning"}, {"evidence_id": "E1", "text": "Date of collision: 2026-09-05"}], "note": ""}
         }
       },
@@ -239,7 +239,7 @@
       "panel": {
         "base": "LEGIT",
         "indicators": {
-          "NARRATIVE_CONTRADICTION": {"state": "PRESENT", "evidence_ids": ["E1", "E5"], "quotes": [{"evidence_id": "E5", "text": "reversed quickly and hit the front of the van with its back end"}, {"evidence_id": "E1", "text": "failed to stop and struck the rear of Vehicle 1"}], "note": ""},
+          "NARRATIVE_CONTRADICTION": {"state": "ABSENT", "evidence_ids": [], "quotes": [], "note": "Covered by WITNESS_CONFLICT."},
           "WITNESS_CONFLICT": {"state": "PRESENT", "evidence_ids": ["E1", "E5"], "quotes": [{"evidence_id": "E5", "text": "reversed quickly and hit the front of the van with its back end"}, {"evidence_id": "E1", "text": "failed to stop and struck the rear of Vehicle 1"}], "note": "The witness reverses the direction of the collision."}
         }
       },
