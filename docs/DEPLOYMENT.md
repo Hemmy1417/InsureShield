@@ -192,9 +192,10 @@ python -m pytest tests/integration -q     3 passed, 1 skipped (writes are opt-in
 git status --short --ignored              only __pycache__ directories
 ```
 
-The GenVM runner bundle was already cached on that machine; the cold-cache
-path (download, verify, seed both caches) runs on every CI job, on a fresh
-Ubuntu runner, and passes.
+The GenVM runner bundle was already cached on that machine. The download
+path runs in CI: every job runs `scripts/fetch_genvm_bundle.py`; the first job
+(`41ffdc5`) had no cache for its key and passed, and later jobs restore the
+verified bundle from `actions/cache`.
 
 ## Disposable deployments
 
