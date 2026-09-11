@@ -44,6 +44,7 @@ import time
 import urllib.error
 import urllib.request
 
+import studionet_transport  # noqa: F401 - retries RPC transport failures
 from genlayer_py import create_account, create_client
 from genlayer_py.chains import studionet
 from genlayer_py.types import TransactionStatus

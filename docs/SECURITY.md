@@ -137,7 +137,7 @@ Rejecting everything is not safe either. The contract:
   innocent, `INCONCLUSIVE` rather than `SUSPICIOUS`;
 - tells the panel that unusual circumstances explained consistently are not
   contradictions, and that silence is `UNVERIFIABLE`, never `NOT_SATISFIED`;
-- requires two documents and verbatim quotes for any contradiction;
+- requires quotes from two documents, each grounded in the verified bytes, for any contradiction;
 - makes an indicator `NOT_APPLICABLE` when its evidence kinds are absent,
   so a minimal but sufficient claim is not held open;
 - keeps legitimate cases (including an animal strike at 02:10) in the

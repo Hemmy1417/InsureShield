@@ -579,8 +579,12 @@ def test_list_views_are_bounded_pages(shield, direct_vm, policy_id):
                                                                 "items": []}
 
 
-def test_incident_outside_the_coverage_period_is_rejected(shield, direct_vm):
-    policy_id = create_policy(shield, coverage_end="2026-09-01")
+@pytest.mark.parametrize("window", [{"coverage_end": "2026-09-01"},
+                                    {"coverage_start": "2026-09-06"}])
+def test_incident_outside_the_coverage_period_is_rejected(shield, direct_vm, window):
+    """The incident (2026-09-05) falls after the cover ends, or before it
+    starts: both boundaries are enforced."""
+    policy_id = create_policy(shield, **window)
     claim_id = submit(shield, policy_id, case("L-01")["claim"])
     direct_vm.clear_mocks()
     assert shield.resolve_claim(claim_id) == "REJECTED"

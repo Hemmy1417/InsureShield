@@ -871,3 +871,58 @@ def test_inflation_is_not_computed_over_part_of_the_invoices(shield, direct_vm,
     assert finding(receipt, "criteria", "C2") == {
         "id": "C2", "state": "UNVERIFIABLE", "by": "CODE", "evidence_ids": [],
         "quotes": [], "note": ""}
+
+
+# -- grounding: the document's words, in order, formatting ignored -----------------
+
+GROUNDING_CASES = [
+    ("VIN JTDBR32E720123456", True),                         # colon dropped
+    ("“Registered keeper - Amara Okafor”", True),  # curly quotes, dash
+    ("registered keeper: AMARA OKAFOR", True),              # case
+    ("Make / model: Toyota Corolla ... Registered keeper: Amara Okafor", True),
+    ("Registered keeper: Amara Okafor ... VIN: JTDBR32E720123456", False),  # order
+    ("keeper Toyota Okafor Corolla", False),                # scattered words
+    ("Registration: EF21", True),
+    ("egistered keeper", False),                            # partial word
+    ("Colourful keeper", False),
+    ("Registration:", False),                               # one word
+    ("The keeper is Marcus Bell", False),                   # not said
+]
+
+
+@pytest.mark.parametrize("text, grounded", GROUNDING_CASES)
+def test_quote_grounding_rule(mod, text, grounded):
+    from tests.direct.support import file_bytes
+    texts = {"E4": file_bytes("registry/ownership_record.txt").decode("utf-8")}
+    quote = {"evidence_id": "E4", "text": text}
+    assert mod._quote_grounded(quote, ["E4"], texts) is grounded
+
+
+def test_a_reformatted_quote_keeps_a_satisfied_finding(shield, direct_vm, policy_id):
+    """The live split this rule fixes: a weaker model copies 'VIN
+    JTDBR32E720123456' without the colon. The words are the document's, so
+    the finding stands on every node."""
+    answer = answer_with(criteria={"C4": {
+        "state": "SATISFIED", "evidence_ids": ["E4"],
+        "quotes": [{"evidence_id": "E4", "text": "VIN JTDBR32E720123456"},
+                   {"evidence_id": "E4", "text": "Registered keeper - Amara Okafor"}],
+        "note": ""}})
+    receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
+    assert finding(receipt, "criteria", "C4")["state"] == "SATISFIED"
+    assert receipt["verdict"] == "VALID"
+
+
+def test_a_quote_joining_distant_words_is_not_grounded(shield, direct_vm, policy_id):
+    answer = answer_with(criteria={"C4": {
+        "state": "SATISFIED", "evidence_ids": ["E4"],
+        "quotes": [{"evidence_id": "E4", "text": "Amara Okafor Toyota Corolla owner"}],
+        "note": ""}})
+    receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
+    assert finding(receipt, "criteria", "C4")["state"] == "UNVERIFIABLE"
+
+
+def test_a_downgrade_is_reported_on_the_nodes_stdout(shield, direct_vm, policy_id,
+                                                     capsys):
+    answer = answer_with(criteria={"C3": {"state": "SATISFIED", "quotes": []}})
+    resolve_with_answer(shield, direct_vm, policy_id, answer)
+    assert "[DOWNGRADE] C3 SATISFIED: no quote grounded" in capsys.readouterr().out

@@ -32,7 +32,7 @@ validator run the same procedure, `_node_round`, from their own vantage:
 4. **Ask the panel once** (`PANEL_HEADER` + `_panel_blob`), with every
    examined document in full inside a JSON data block.
 5. **Ground the answer** (`_panel_findings`): off-vocabulary states, foreign
-   evidence ids and non-verbatim quotes are discarded; a `SATISFIED` or
+   evidence ids and ungrounded quotes are discarded; a `SATISFIED` or
    `APPLIES` without a surviving quote, or a `PRESENT` that fails its quote
    rule, is downgraded to `UNVERIFIABLE` / `UNDETERMINED`.
 
@@ -110,9 +110,8 @@ by deterministic code from compared fields (`_derive`, `_registry_findings`).
      using a state outside its vocabulary;
    - a `SATISFIED` or `APPLIES` without a quote, or a `PRESENT` that fails its
      quote rule;
-   - any quote that is not verbatim (after whitespace and case
-     normalisation) in the validator's own verified bytes of the cited
-     document;
+   - any quote whose words do not occur, contiguously and in order, in the
+     validator's own verified bytes of the cited document (`_quote_grounded`);
 3. any compared field differs from the validator's own reproduction.
 
 A validator exception propagates and counts as disagreement.
@@ -123,7 +122,28 @@ A quote is the only content the leader authors that enters the permanent
 record from the panel. It is corroborated where it enters the record: every
 validator checks each one against bytes it fetched and hash-verified itself.
 A leader cannot store a passage no other node saw, and cannot hide an empty
-quote behind a positive finding (quotes are 8 to 240 characters).
+quote behind a positive finding (quotes are 8 to 240 characters and at
+least two words).
+
+The check compares words, not characters (`_word_tokens`): the quote's
+lowercase alphanumeric words must appear in the document as one contiguous
+run, or - when the quote elides with an ellipsis - as contiguous runs in the
+same order. Punctuation, quote marks, dashes and line breaks are ignored.
+This was changed after diagnostic rounds on a disposable StudioNet
+deployment with a character-exact rule. Every validator split observed was
+of one shape: a node running a different model family (Mistral, GLM, Qwen,
+MiniMax) held `UNVERIFIABLE` or `UNDETERMINED` where the other nodes held
+`SATISFIED` or `PRESENT` - the downgrade a node applies when none of its own
+quotes pass grounding. In one round such a node led after rotation and the
+round ended without a verdict. The diagnostics recorded the downgraded state,
+not the quotes themselves; the character-exact rule was the one part of the
+downgrade path that formatting alone could trip, so it was the part changed.
+Word-level grounding tolerates formatting and still rejects anything the
+document does not say - scattered words, reordered fragments, partial words
+and paraphrase all fail (`test_quote_grounding_rule`). A node that downgrades
+a finding prints `[DOWNGRADE] ...` to its own stdout, and a validator that
+disagrees prints the first differing field as `[DISAGREE] ...`, so every
+split in a live receipt can be read back.
 
 ## After consensus
 

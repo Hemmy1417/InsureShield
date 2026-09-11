@@ -28,9 +28,13 @@ import pathlib
 import time
 import urllib.request
 
+import sys
+
 import pytest
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts"))
+import studionet_transport  # noqa: E402,F401 - retries RPC transport failures
 RECORD = ROOT / "deploy" / "deployment.json"
 TRANSCRIPT = ROOT / "deploy" / "live_scenarios_transcript.json"
 RPC = "https://studio.genlayer.com/api"

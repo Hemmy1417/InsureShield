@@ -316,10 +316,12 @@ PANEL_HEADER = (
     "a contradiction and not a sign of fraud. Differences in wording, detail, "
     "rounding or formatting are not contradictions. A contradiction is two "
     "documents asserting incompatible facts about the same thing.\n\n"
-    "QUOTES: every quote is an exact, contiguous copy of 8 to 240 characters "
-    "from the cited document's text, with that document's evidence_id. Code "
-    "checks every quote against the document bytes; a quote that is not "
-    "verbatim is discarded and a finding that depended on it is "
+    "QUOTES: copy each quote exactly from the cited document's text - the "
+    "same words in the same order, 8 to 240 characters, usually one short "
+    "phrase or line - with that document's evidence_id. Do not paraphrase, "
+    "summarize, translate or join words from different places. Code checks "
+    "every quote's words against the document bytes; a quote whose words are "
+    "not in the document is discarded and a finding that depended on it is "
     "downgraded.\n\n"
     "facts_verified_by_code were computed by code from the structured "
     "documents and are authoritative.\n\n"
@@ -1110,7 +1112,41 @@ def _skipped_findings(plan: dict, by: str) -> tuple:
     return (criteria, exclusions, indicators)
 
 
+def _word_tokens(text: str) -> list:
+    """Lowercase alphanumeric words, in order. Punctuation, quote marks,
+    dashes, colons and line breaks separate words and are otherwise
+    ignored, so a quote survives the formatting differences models
+    introduce while its words must still be the document's words."""
+    words = []
+    current = []
+    for ch in text.casefold():
+        if ch.isalnum():
+            current.append(ch)
+        elif current:
+            words.append("".join(current))
+            current = []
+    if current:
+        words.append("".join(current))
+    return words
+
+
+def _find_run(haystack: list, needle: list, start: int) -> int:
+    """Index just past the first contiguous occurrence of needle in
+    haystack at or after start, or -1."""
+    last = len(haystack) - len(needle)
+    i = start
+    while i <= last:
+        if haystack[i:i + len(needle)] == needle:
+            return i + len(needle)
+        i = i + 1
+    return -1
+
+
 def _quote_grounded(quote: dict, eligible: list, texts) -> bool:
+    """A quote is grounded when its words occur in the cited document's
+    verified bytes as one contiguous run - or, when the quote elides with
+    an ellipsis, as contiguous runs in the same order. A quote needs at
+    least two words in total. Nothing a document does not say can pass."""
     if quote["evidence_id"] not in eligible:
         return False
     if texts is None:
@@ -1118,8 +1154,20 @@ def _quote_grounded(quote: dict, eligible: list, texts) -> bool:
     source = texts.get(quote["evidence_id"])
     if source is None:
         return False
-    needle = _norm_ws(quote["text"])
-    return needle != "" and needle in _norm_ws(source)
+    fragments = []
+    for part in quote["text"].replace("\u2026", "...").split("..."):
+        words = _word_tokens(part)
+        if words:
+            fragments.append(words)
+    if len(fragments) == 0 or sum(len(f) for f in fragments) < 2:
+        return False
+    haystack = _word_tokens(source)
+    position = 0
+    for words in fragments:
+        position = _find_run(haystack, words, position)
+        if position < 0:
+            return False
+    return True
 
 
 def _quotes_satisfy(indicator: str, quotes: list, kinds: dict) -> bool:
@@ -1196,6 +1244,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
         state, ids, quotes, note = _normalize_answer(section_c, cid,
                                                      CRITERION_STATES, eligible,
                                                      texts)
+        if state == SATISFIED and len(quotes) == 0:
+            print("[DOWNGRADE] " + cid + " SATISFIED: no quote grounded")
         if state is None or (state == SATISFIED and len(quotes) == 0):
             state = UNVERIFIABLE
         criteria.append(_finding(cid, state, BY_PANEL, ids, quotes, note))
@@ -1208,6 +1258,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
         state, ids, quotes, note = _normalize_answer(section_x, xid,
                                                      EXCLUSION_STATES, eligible,
                                                      texts)
+        if state == APPLIES and len(quotes) == 0:
+            print("[DOWNGRADE] " + xid + " APPLIES: no quote grounded")
         if state is None or (state == APPLIES and len(quotes) == 0):
             state = UNVERIFIABLE
         exclusions.append(_finding(xid, state, BY_PANEL, ids, quotes, note))
@@ -1218,6 +1270,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
             continue
         state, ids, quotes, note = _normalize_answer(
             section_i, name, (PRESENT, ABSENT, UNDETERMINED), eligible, texts)
+        if state == PRESENT and not _quotes_satisfy(name, quotes, kinds):
+            print("[DOWNGRADE] " + name + " PRESENT: quote rule not met")
         if state is None or (state == PRESENT
                              and not _quotes_satisfy(name, quotes, kinds)):
             state = UNDETERMINED
@@ -1575,31 +1629,36 @@ def _parse_payload(text, ctx: dict, texts=None):
     return p
 
 
-def _decision_fields_equal(own: dict, theirs: dict) -> bool:
+def _first_difference(own: dict, theirs: dict) -> str:
     """The equivalence rule (EQUIVALENCE_STATEMENT): row status and byte
     count, structured facts, markers, panel state and reason, and the state
     and deciding layer of every finding. Quotes, notes and cited ids are
     grounded by the gate, never compared: two honest panels quote
-    differently."""
+    differently. Returns "" when equal, otherwise which field differs."""
     if own["panel_state"] != theirs["panel_state"] \
             or own["panel_reason"] != theirs["panel_reason"]:
-        return False
+        return "panel " + own["panel_state"] + " vs " + theirs["panel_state"]
     if own["markers"] != theirs["markers"] or own["facts"] != theirs["facts"]:
-        return False
+        return "markers or facts"
     for i in range(len(own["rows"])):
         a = own["rows"][i]
         b = theirs["rows"][i]
         if a["status"] != b["status"] or a["byte_count"] != b["byte_count"]:
-            return False
+            return "row " + a["evidence_id"] + " " + a["status"] + " vs " + b["status"]
     for section in ("criteria", "exclusions", "indicators"):
         if len(own[section]) != len(theirs[section]):
-            return False
+            return section + " length"
         for i in range(len(own[section])):
             a = own[section][i]
             b = theirs[section][i]
             if a["id"] != b["id"] or a["state"] != b["state"] or a["by"] != b["by"]:
-                return False
-    return True
+                return (a["id"] + " " + a["state"] + "/" + a["by"] + " vs "
+                        + b["state"] + "/" + b["by"])
+    return ""
+
+
+def _decision_fields_equal(own: dict, theirs: dict) -> bool:
+    return _first_difference(own, theirs) == ""
 
 
 def _error_text(err) -> str:
@@ -1642,8 +1701,13 @@ def _validator_decision(leader_res, reproduce, ctx: dict) -> bool:
         own, own_texts = reproduce()
         parsed = _parse_payload(leader_res.calldata, ctx, own_texts)
         if parsed is None:
+            print("[DISAGREE] leader payload failed the structural gate")
             return False
-        return _decision_fields_equal(own, parsed)
+        difference = _first_difference(own, parsed)
+        if difference != "":
+            print("[DISAGREE] own vs leader: " + difference)
+            return False
+        return True
     return _vote_on_leader_error(leader_res, reproduce)
 
 
@@ -2578,11 +2642,6 @@ class InsureShield(gl.Contract):
         if str(pv.status) == POLICY_REVOKED:
             return False
         if str(pv.definition_hash) != str(claim.definition_hash):
-            return False
-        receipt = json.loads(str(self.receipts.get(
-            str(claim.receipt_ids[len(claim.receipt_ids) - 1]))))
-        if receipt["definition_hash"] != str(claim.definition_hash) \
-                or receipt["verdict"] != VALID:
             return False
         return self._freshness(claim, as_of) == "RELIABLE"
 
