@@ -1183,42 +1183,91 @@ def _quotes_satisfy(indicator: str, quotes: list, kinds: dict) -> bool:
     return True
 
 
+def _evidence_ref(value):
+    """A model's reference to a document ("E4", "e4", "4", 4) as an
+    evidence id, or None."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        value = str(value)
+    if not isinstance(value, str):
+        return None
+    text = value.strip().upper()
+    if text.isdigit():
+        text = "E" + text
+    return text if text != "" else None
+
+
+def _first_present(entry: dict, keys: tuple):
+    for key in keys:
+        if key in entry and entry[key] is not None:
+            return entry[key]
+    return None
+
+
+def _ground_quote(text: str, cited, eligible: list, texts: dict):
+    """The quote as a stored {evidence_id, text}, or None. It is kept only
+    if its words are in an eligible document's verified bytes: the cited one
+    first, otherwise the first eligible document that contains them. An
+    over-long quote is cut at a word boundary; the kept part must ground."""
+    text = text.strip()
+    if len(text) > QUOTE_CAP:
+        cut = text[:QUOTE_CAP]
+        text = cut[:cut.rfind(" ")].strip() if " " in cut else ""
+    if len(text) < QUOTE_MIN:
+        return None
+    order = ([cited] if cited in eligible else []) + \
+        [e for e in eligible if e != cited]
+    for eid in order:
+        candidate = {"evidence_id": eid, "text": text}
+        if _quote_grounded(candidate, eligible, texts):
+            return candidate
+    return None
+
+
 def _normalize_answer(raw, subject_id: str, vocab: tuple, eligible: list,
                       texts: dict) -> tuple:
     """One subject's model answer reduced to (state, evidence_ids, quotes,
-    note). Off-vocabulary states, foreign evidence ids and non-verbatim
-    quotes are discarded here - never passed on."""
+    note). Models return quotes in several shapes (objects, plain strings,
+    "quote"/"excerpt" keys, "4" for "E4"); each is accepted, but a quote is
+    kept only if it grounds in an eligible document's verified bytes.
+    Off-vocabulary states and foreign evidence ids are discarded."""
     entry = raw.get(subject_id) if isinstance(raw, dict) else None
     if isinstance(entry, str):
         entry = {"state": entry}
     if not isinstance(entry, dict):
         return (None, [], [], "")
-    state = entry.get("state")
+    state = _first_present(entry, ("state", "status", "finding"))
     state = state.strip().upper() if isinstance(state, str) else None
     if state not in vocab:
         state = None
+    raw_quotes = _first_present(entry, ("quotes", "quote", "excerpts", "evidence"))
+    if isinstance(raw_quotes, (str, dict)):
+        raw_quotes = [raw_quotes]
     quotes = []
-    raw_quotes = entry.get("quotes")
     if isinstance(raw_quotes, list):
         for q in raw_quotes:
-            if not isinstance(q, dict):
+            if isinstance(q, str):
+                qtext, cited = q, None
+            elif isinstance(q, dict):
+                qtext = _first_present(q, ("text", "quote", "excerpt"))
+                cited = _evidence_ref(_first_present(
+                    q, ("evidence_id", "id", "document", "source")))
+            else:
                 continue
-            eid = q.get("evidence_id")
-            qtext = q.get("text")
-            if not isinstance(eid, str) or not isinstance(qtext, str):
+            if not isinstance(qtext, str) or len(quotes) >= MAX_QUOTES:
                 continue
-            qtext = qtext.strip()
-            if len(qtext) < QUOTE_MIN or len(qtext) > QUOTE_CAP:
-                continue
-            candidate = {"evidence_id": eid, "text": qtext}
-            if _quote_grounded(candidate, eligible, texts) and \
-                    len(quotes) < MAX_QUOTES:
-                quotes.append(candidate)
+            grounded = _ground_quote(qtext, cited, eligible, texts)
+            if grounded is not None and grounded not in quotes:
+                quotes.append(grounded)
     ids = []
     raw_ids = entry.get("evidence_ids")
+    if isinstance(raw_ids, (str, int)):
+        raw_ids = [raw_ids]
     if isinstance(raw_ids, list):
-        for eid in raw_ids:
-            if isinstance(eid, str) and eid in eligible and eid not in ids:
+        for value in raw_ids:
+            eid = _evidence_ref(value)
+            if eid in eligible and eid not in ids:
                 ids.append(eid)
     for q in quotes:
         if q["evidence_id"] not in ids:
@@ -1245,7 +1294,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
                                                      CRITERION_STATES, eligible,
                                                      texts)
         if state == SATISFIED and len(quotes) == 0:
-            print("[DOWNGRADE] " + cid + " SATISFIED: no quote grounded")
+            print("[DOWNGRADE] " + cid + " SATISFIED: no quote grounded; raw "
+                  + repr(section_c.get(cid))[:160])
         if state is None or (state == SATISFIED and len(quotes) == 0):
             state = UNVERIFIABLE
         criteria.append(_finding(cid, state, BY_PANEL, ids, quotes, note))
@@ -1259,7 +1309,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
                                                      EXCLUSION_STATES, eligible,
                                                      texts)
         if state == APPLIES and len(quotes) == 0:
-            print("[DOWNGRADE] " + xid + " APPLIES: no quote grounded")
+            print("[DOWNGRADE] " + xid + " APPLIES: no quote grounded; raw "
+                  + repr(section_x.get(xid))[:160])
         if state is None or (state == APPLIES and len(quotes) == 0):
             state = UNVERIFIABLE
         exclusions.append(_finding(xid, state, BY_PANEL, ids, quotes, note))
@@ -1271,7 +1322,8 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
         state, ids, quotes, note = _normalize_answer(
             section_i, name, (PRESENT, ABSENT, UNDETERMINED), eligible, texts)
         if state == PRESENT and not _quotes_satisfy(name, quotes, kinds):
-            print("[DOWNGRADE] " + name + " PRESENT: quote rule not met")
+            print("[DOWNGRADE] " + name + " PRESENT: quote rule not met; raw "
+                  + repr(section_i.get(name))[:160])
         if state is None or (state == PRESENT
                              and not _quotes_satisfy(name, quotes, kinds)):
             state = UNDETERMINED

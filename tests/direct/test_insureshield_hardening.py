@@ -361,12 +361,16 @@ def test_notes_are_sanitized_and_bounded(shield, direct_vm, policy_id):
     assert len(note) == 200 and "\n" not in note and "\t" not in note
 
 
-def test_quotes_are_capped_at_three(shield, direct_vm, policy_id):
-    q = {"evidence_id": "E1", "text": "Date of collision: 2026-09-05"}
-    answer = answer_with(criteria={"C3": {"state": "SATISFIED",
-                                          "quotes": [q, q, q, q, q]}})
+def test_quotes_are_capped_at_three_and_deduplicated(shield, direct_vm, policy_id):
+    texts = ["Date of collision: 2026-09-05", "Time: approximately 17:40",
+             "Location: junction of Harbour Road and Kingsway",
+             "Driver: Daniel Reyes", "No injuries reported"]
+    quotes = [{"evidence_id": "E1", "text": texts[0]}] * 2 + \
+        [{"evidence_id": "E1", "text": t} for t in texts[1:]]
+    answer = answer_with(criteria={"C3": {"state": "SATISFIED", "quotes": quotes}})
     receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
-    assert len(finding(receipt, "criteria", "C3")["quotes"]) == 3
+    kept = finding(receipt, "criteria", "C3")["quotes"]
+    assert [q["text"] for q in kept] == texts[:3]
 
 
 def test_injection_in_the_claimant_statement_is_not_evidence(shield, direct_vm,
@@ -926,3 +930,52 @@ def test_a_downgrade_is_reported_on_the_nodes_stdout(shield, direct_vm, policy_i
     answer = answer_with(criteria={"C3": {"state": "SATISFIED", "quotes": []}})
     resolve_with_answer(shield, direct_vm, policy_id, answer)
     assert "[DOWNGRADE] C3 SATISFIED: no quote grounded" in capsys.readouterr().out
+
+
+# -- the shapes models actually return ---------------------------------------------
+
+@pytest.mark.parametrize("quotes", [
+    ["VIN: JTDBR32E720123456"],                                   # plain strings
+    "Registered keeper: Amara Okafor",                            # one string
+    [{"evidence_id": "4", "text": "Registered keeper: Amara Okafor"}],   # "4"
+    [{"evidence_id": 4, "quote": "Registered keeper: Amara Okafor"}],    # int, "quote"
+    [{"id": "e4", "excerpt": "Registered keeper: Amara Okafor"}],         # other keys
+    [{"evidence_id": "E1", "text": "Registered keeper: Amara Okafor"}],  # wrong doc
+])
+def test_quote_shapes_models_return_are_grounded(shield, direct_vm, policy_id, quotes):
+    answer = answer_with(criteria={"C4": {"state": "SATISFIED", "quotes": quotes}})
+    receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
+    c4 = finding(receipt, "criteria", "C4")
+    assert c4["state"] == "SATISFIED"
+    assert all(q["evidence_id"] == "E4" for q in c4["quotes"])
+
+
+@pytest.mark.parametrize("quotes", [
+    ["The registered keeper is Amara Okafor"],       # paraphrase
+    [{"evidence_id": "E1", "text": "Vehicle 2, travelling in the same direction"}],  # ineligible doc
+    [True, 4, None, {"evidence_id": "E4"}],          # junk
+])
+def test_shapes_never_ground_what_the_eligible_documents_do_not_say(
+        shield, direct_vm, policy_id, quotes):
+    answer = answer_with(criteria={"C4": {"state": "SATISFIED", "quotes": quotes}})
+    receipt = resolve_with_answer(shield, direct_vm, policy_id, answer)
+    assert finding(receipt, "criteria", "C4")["state"] == "UNVERIFIABLE"
+
+
+def test_an_overlong_quote_is_cut_at_a_word_and_still_grounded(mod):
+    from tests.direct.support import file_bytes
+    text = file_bytes("evidence/legit/incident_report.txt").decode("utf-8")
+    start = text.index("Account:")
+    long_quote = " ".join(text[start:start + 400].split())
+    kept = mod._ground_quote(long_quote, "E1", ["E1"], {"E1": text})
+    assert kept is not None and len(kept["text"]) <= 240
+    assert kept["text"].startswith("Account: Vehicle 1 was stationary")
+
+
+def test_state_aliases(mod):
+    raw = {"C3": {"status": "satisfied", "quotes": ["Date of collision: 2026-09-05"]}}
+    from tests.direct.support import file_bytes
+    texts = {"E1": file_bytes("evidence/legit/incident_report.txt").decode("utf-8")}
+    state, ids, quotes, _note = mod._normalize_answer(raw, "C3", mod.CRITERION_STATES,
+                                                      ["E1"], texts)
+    assert (state, ids) == ("SATISFIED", ["E1"]) and len(quotes) == 1
