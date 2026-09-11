@@ -928,7 +928,7 @@ def test_a_downgrade_is_reported_on_the_nodes_stdout(shield, direct_vm, policy_i
                                                      capsys):
     answer = answer_with(criteria={"C3": {"state": "SATISFIED", "quotes": []}})
     resolve_with_answer(shield, direct_vm, policy_id, answer)
-    assert "[DOWNGRADE] C3 SATISFIED: no quote grounded" in capsys.readouterr().out
+    assert "[DOWNGRADE] C3 SATISFIED: no quote grounded; raw []" in capsys.readouterr().out
 
 
 # -- the shapes models actually return ---------------------------------------------

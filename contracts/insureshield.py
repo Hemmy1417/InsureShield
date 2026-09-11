@@ -186,15 +186,16 @@ INDICATOR_QUESTIONS = {
         "other documents describe (make, model, serial, registration or VIN), "
         "or name an owner other than the policyholder named in the claim?",
     "DAMAGE_MISMATCH":
-        "Is the damage described in the photo log inconsistent with the "
-        "repairs that are invoiced or estimated (for example rear damage "
-        "photographed while front repairs are billed)? Every inconsistency "
-        "between damage and repairs belongs here and nowhere else.",
+        "Is the damage shown in the photo log inconsistent with the damage "
+        "the other documents describe or with the repairs invoiced or "
+        "estimated (for example rear damage reported and billed while the "
+        "photos show only front damage)? Every inconsistency about the damage "
+        "itself belongs here and nowhere else.",
     "NARRATIVE_CONTRADICTION":
-        "Leaving aside witness statements and the damage-versus-repairs "
-        "comparison (each has its own question), do two documents give "
-        "incompatible accounts of the incident itself: its date, time, "
-        "place, the item involved, the parties, or the sequence of events?",
+        "Leaving aside witness statements and the damage (each has its own "
+        "question), do two documents give incompatible accounts of the "
+        "incident itself: its date, time, place, the item involved, the "
+        "parties, or the sequence of events?",
     "WITNESS_CONFLICT":
         "Does a witness statement contradict another witness statement or "
         "any other document on a material fact of the incident? Every "
@@ -1280,6 +1281,15 @@ def _normalize_answer(raw, subject_id: str, vocab: tuple, eligible: list,
     return (state, ordered, quotes, _clean_note(entry.get("note")))
 
 
+def _raw_quotes(section, subject_id: str) -> str:
+    """The quotes a model returned for one subject, bounded - printed when
+    a finding is downgraded so a live receipt shows why."""
+    entry = section.get(subject_id) if isinstance(section, dict) else None
+    if isinstance(entry, dict):
+        entry = _first_present(entry, ("quotes", "quote", "excerpts", "evidence"))
+    return repr(entry)[:400]
+
+
 def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
     """Turn the model's answer into findings under the grounding rules:
     SATISFIED and APPLIES need at least one surviving quote, PRESENT needs
@@ -1299,7 +1309,7 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
                                                      texts)
         if state == SATISFIED and len(quotes) == 0:
             print("[DOWNGRADE] " + cid + " SATISFIED: no quote grounded; raw "
-                  + repr(section_c.get(cid))[:160])
+                  + _raw_quotes(section_c, cid))
         if state is None or (state == SATISFIED and len(quotes) == 0):
             state = UNVERIFIABLE
         criteria.append(_finding(cid, state, BY_PANEL, ids, quotes, note))
@@ -1314,7 +1324,7 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
                                                      texts)
         if state == APPLIES and len(quotes) == 0:
             print("[DOWNGRADE] " + xid + " APPLIES: no quote grounded; raw "
-                  + repr(section_x.get(xid))[:160])
+                  + _raw_quotes(section_x, xid))
         if state is None or (state == APPLIES and len(quotes) == 0):
             state = UNVERIFIABLE
         exclusions.append(_finding(xid, state, BY_PANEL, ids, quotes, note))
@@ -1327,7 +1337,7 @@ def _panel_findings(raw, plan: dict, kinds: dict, texts: dict) -> tuple:
             section_i, name, (PRESENT, ABSENT, UNDETERMINED), eligible, texts)
         if state == PRESENT and not _quotes_satisfy(name, quotes, kinds):
             print("[DOWNGRADE] " + name + " PRESENT: quote rule not met; raw "
-                  + repr(section_i.get(name))[:160])
+                  + _raw_quotes(section_i, name))
         if state is None or (state == PRESENT
                              and not _quotes_satisfy(name, quotes, kinds)):
             state = UNDETERMINED
