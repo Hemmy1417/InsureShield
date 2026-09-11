@@ -14,7 +14,9 @@ deploy - and checks what only the network can show:
      commit-pinned GitHub raw URLs and hash-verified by every node, decided
      SUSPICIOUS by code.
 
-Writes use a fresh ephemeral account (StudioNet is gasless). Model-decided
+Tests 4 and 5 write to the canonical deployment, so they run only with
+INSURESHIELD_LIVE_WRITES=1 (CI runs 1-3). Writes use a fresh ephemeral
+account (StudioNet is gasless). Model-decided
 outcomes are covered by scripts/live_scenarios.py, not here, so this suite
 never depends on a model's reading.
 
@@ -24,6 +26,7 @@ never depends on a model's reading.
 import base64
 import hashlib
 import json
+import os
 import pathlib
 import time
 import urllib.request
@@ -130,6 +133,9 @@ def canonical_definition(raw: str) -> str:
 
 
 @pytest.mark.skipif(not TRANSCRIPT.exists(), reason="no pinned evidence base yet")
+@pytest.mark.skipif(os.environ.get("INSURESHIELD_LIVE_WRITES") != "1",
+                    reason="writes to the canonical deployment are opt-in: "
+                           "set INSURESHIELD_LIVE_WRITES=1")
 def test_admission_and_a_code_decided_round(client):
     raw = json.loads(TRANSCRIPT.read_text(encoding="utf-8"))["raw_base"]
     definition, support = canonical_definition(raw)

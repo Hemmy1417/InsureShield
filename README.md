@@ -187,7 +187,7 @@ $ python scripts/preflight.py            27 checks, 0 failed
 $ python -m pytest tests/direct -q       341 passed
 $ python scripts/mutation_check.py       109 killed, 1 survived (documented equivalent; deploy/mutation_sweep_aa01aa2.txt)
 $ genvm-lint check contracts/insureshield.py --json   {"ok":true, ... "methods":25}
-$ python -m pytest tests/integration -v  4 passed in 237.83s
+$ INSURESHIELD_LIVE_WRITES=1 python -m pytest tests/integration -v   4 passed in 237.83s
 ```
 
 ## Tech stack
@@ -233,7 +233,8 @@ Against the network (gasless; accounts are generated locally):
 
 ```bash
 python scripts/deploy_studionet.py --verify
-python -m pytest tests/integration -v
+python -m pytest tests/integration -v                       # read-only checks
+INSURESHIELD_LIVE_WRITES=1 python -m pytest tests/integration -v   # plus two write flows
 python scripts/live_scenarios.py 0x638f5610288d292Fac9DfdD53d094Da0c38c5299 --raw-base https://raw.githubusercontent.com/Hemmy1417/InsureShield/aa01aa225467f074b9adbbb15151002d4e319a6c/fixtures/
 ```
 

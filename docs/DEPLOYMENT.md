@@ -169,13 +169,13 @@ new live run.
 
 ## Integration run
 
-`python -m pytest tests/integration -v` against the canonical deployment:
+`INSURESHIELD_LIVE_WRITES=1 python -m pytest tests/integration -v` against the canonical deployment:
 4 passed in 237.83 s (byte-identical source; the 25-method schema; the
 deployed configuration; a policy, a late claim `REJECTED` at admission with no
 fetch, and the fabricated-invoice attack registered and run as an on-chain
 test, decided `SUSPICIOUS` by code with all six documents fetched and
 hash-verified by every node). It created its own policy on the canonical
-deployment with a fresh account.
+deployment with a fresh account. Without `INSURESHIELD_LIVE_WRITES=1` (as in CI) only the three read-only checks run.
 
 ## Disposable deployments
 
