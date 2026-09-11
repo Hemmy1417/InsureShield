@@ -1,0 +1,22 @@
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+deployed 0xA5128d12983a0517936536B43041B811af0174A3 SUCCESS
+policy SUCCESS
+L-01 FINALIZED VALID True 77 s [('anthropic/claude-sonnet-4.6', 'idle', ''), ('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-gpt-5-4', 'agree', ''), (None, 'idle', ''), ('openai/gpt-5.4', 'agree', '')]
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionReceipt (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+L-01 FINALIZED VALID True 71 s [('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-sonnet', 'agree', ''), ('policy:prd-sonnet', 'agree', ''), ('policy:prd-mistral', 'disagree', '[DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL'), ('policy:prd-glm', 'disagree', '[DISAGREE] own vs leader: C3 UNVERIFIABLE/PANEL vs SATISFIED/PANEL')]
+L-02 FINALIZED VALID True 93 s [('policy:prd-gpt-5-4', 'idle', ''), ('policy:prd-sonnet', 'agree', ''), ('policy:prd-gemini', 'agree', ''), (None, 'idle', ''), ('policy:prd-qwen', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on eth_getTransactionByHash (2/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 10s
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+A-07 FINALIZED INCONCLUSIVE True 166 s [('policy:prd-sonnet', 'agree', ''), ('policy:prd-qwen', 'disagree', '[DISAGREE] own vs leader: NARRATIVE_CONTRADICTION UNDETERMINED/PANEL vs PRESENT/PANEL'), ('policy:prd-glm', 'disagree', '[DISAGREE] own vs leader: C3 UNVERIFIABLE/PANEL vs SATISFIED/PANEL'), ('policy:prd-gemini', 'agree', ''), ('policy:prd-grok', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+A-10 FINALIZED SUSPICIOUS True 115 s [('policy:prd-sonnet', 'agree', ''), ('policy:prd-mistral', 'agree', ''), ('policy:prd-minimax', 'disagree', '[DISAGREE] own vs leader: OWNERSHIP_MISMATCH UNDETERMINED/PANEL vs PRESENT/PANEL'), ('openai/gpt-5.4', 'agree', ''), (None, 'idle', '')]
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+A-11 FINALIZED  False 253 s [('policy:prd-glm', 'disagree', ''), ('google/gemini-3-flash-preview', 'disagree', '[DISAGREE] own vs leader: C3 SATISFIED/PANEL vs UNVERIFIABLE/PANEL'), ('openai/gpt-5.4', 'disagree', '[DISAGREE] own vs leader: C3 SATISFIED/PANEL vs UNVERIFIABLE/PANEL'), (None, 'idle', ''), (None, 'idle', '')]
+A-13 FINALIZED SUSPICIOUS True 153 s [('policy:prd-kimi', 'idle', ''), ('policy:prd-gpt-5-4', 'agree', ''), ('openai/gpt-5.4', 'agree', ''), (None, 'idle', ''), ('openai/gpt-5.4', 'agree', '')]
+DONE

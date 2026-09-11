@@ -167,9 +167,6 @@ MUTATIONS = [
     ("quote words need not be contiguous",
      "        if haystack[i:i + len(needle)] == needle:\n",
      "        if all(w in haystack for w in needle):\n"),
-    ("quotes from ineligible documents accepted",
-     "    if quote[\"evidence_id\"] not in eligible:\n        return False\n    if texts is None:\n",
-     "    if texts is None:\n"),
     ("model SATISFIED kept without a quote",
      "        if state is None or (state == SATISFIED and len(quotes) == 0):\n",
      "        if state is None:\n"),
@@ -378,6 +375,10 @@ MUTATIONS = [
 
 # Considered and excluded as equivalent (a second guard makes the first
 # unobservable, so no test can tell the mutant from the original):
+# - the eligibility check inside _quote_grounded: _ground_quote only tries
+#   eligible documents, and the gate requires every quote's document to be
+#   among the finding's cited ids, which must themselves be eligible. Found
+#   by sweep 5 (the check predates both); kept as a self-contained predicate.
 # - "revoked version consumable" in _consumable: _freshness already returns
 #   STALE for a revoked version, so is_consumable is false either way.
 # - the definition_hash cross-checks in _consumable: the claim, its receipt

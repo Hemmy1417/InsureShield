@@ -215,6 +215,12 @@ def address_checks():
         for address in re.findall(r"0x[0-9a-fA-F]{40}(?![0-9a-fA-F])", path.read_text(encoding="utf-8")):
             if address.lower() not in allowed:
                 stray.append(f"{path.name}:{address}")
+    placeholders = [p.name for p in [ROOT / "README.md", ROOT / "SUBMISSION.md"]
+                    + list((ROOT / "docs").glob("*.md"))
+                    if p.exists() and re.search(r"LIVE_SUMMARY|TO_BE_FILLED|TODO",
+                                                p.read_text(encoding="utf-8"))]
+    check("no unfilled placeholders in the docs", not placeholders,
+          ", ".join(placeholders))
     check("docs name only the recorded addresses (one canonical deployment)",
           not stray, ", ".join(sorted(set(stray))))
     source = hashlib.sha256(CONTRACT.read_bytes()).hexdigest()

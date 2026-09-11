@@ -1,0 +1,15 @@
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+deployed 0xecB86fE91c1BE0CDC505900755a289f83FdD0017 SUCCESS
+policy SUCCESS
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+L-01 FINALIZED VALID True 94 s [('policy:prd-sonnet', 'agree', ''), ('policy:prd-gemini', 'agree', ''), ('policy:prd-sonnet', 'agree', ''), ('policy:prd-mistral', 'disagree', "the policyholder as the registered keeper.', 'quotes'\n[DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL"), (None, 'idle', '')]
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+L-01 FINALIZED VALID True 56 s [('policy:prd-gpt-5-4', 'agree', ''), (None, 'idle', ''), (None, 'idle', ''), ('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-gemini', 'agree', '')]
+L-02 FINALIZED VALID True 81 s [('policy:prd-gemma', 'idle', ''), (None, 'idle', ''), ('openai/gpt-5.4', 'agree', ''), ('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-sonnet', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+A-11 FINALIZED SUSPICIOUS True 133 s [('openai/gpt-5.4', 'agree', ''), ('policy:prd-gemini', 'disagree', '[DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL'), ('policy:prd-grok', 'agree', ''), ('policy:prd-mistral', 'disagree', "Amara Okafor as the registered keeper.', 'quotes': [{\n[DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL"), ('policy:prd-gpt-5-4', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+A-07 FINALIZED INCONCLUSIVE True 110 s [('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-glm', 'disagree', '[DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL'), ('anthropic/claude-sonnet-4.6', 'agree', ''), ('policy:prd-qwen', 'disagree', '[DISAGREE] own vs leader: NARRATIVE_CONTRADICTION UNDETERMINED/PANEL vs ABSENT/PANEL'), ('openai/gpt-5.4', 'agree', '')]
+DONE

@@ -1,0 +1,15 @@
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+deployed 0xee892d1CeF312d92116d1b0D96BF56cCb2218ab6 SUCCESS
+policy SUCCESS
+L-01 FINALIZED VALID True 88 s [('policy:prd-sonnet', 'agree', ''), (None, 'idle', ''), (None, 'idle', ''), ('policy:prd-grok', 'agree', ''), ('google/gemini-3-flash-preview', 'agree', '')]
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+L-01 FINALIZED VALID True 78 s [('policy:prd-qwen', 'agree', ''), ('policy:prd-sonnet', 'agree', ''), (None, 'idle', ''), ('policy:prd-deepseek', 'disagree', ' grounded\n[DOWNGRADE] C5 SATISFIED: no quote grounded\n[DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL'), ('openai/gpt-5.4', 'agree', '')]
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+A-07 FINALIZED INCONCLUSIVE True 104 s [('policy:prd-deepseek', 'idle', ''), (None, 'idle', ''), ('policy:prd-gpt-5-4', 'agree', ''), ('openai/gpt-5.4', 'agree', ''), ('openai/gpt-5.4', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+A-10 FINALIZED SUSPICIOUS True 78 s [('policy:prd-mistral', 'agree', ''), (None, 'idle', ''), ('policy:prd-gemma', 'disagree', '[DISAGREE] own vs leader: panel MODEL_OUTPUT_INVALID vs ASSESSED'), ('policy:prd-glm', 'agree', ''), ('policy:prd-gpt-5-4', 'agree', '')]
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+A-11 FINALIZED SUSPICIOUS True 92 s [('policy:prd-deepseek', 'idle', ''), ('policy:prd-glm', 'agree', ''), ('policy:prd-qwen', 'agree', ''), ('policy:prd-grok', 'agree', ''), ('openai/gpt-5.4', 'disagree', '[DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL')]
+L-02 FINALIZED VALID True 71 s [('policy:prd-gpt-5-4', 'agree', ''), ('policy:prd-gemma', 'disagree', ' grounded\n[DOWNGRADE] C5 SATISFIED: no quote grounded\n[DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL'), ('policy:prd-gpt-oss', 'disagree', ' grounded\n[DOWNGRADE] C5 SATISFIED: no quote grounded\n[DISAGREE] own vs leader: C3 UNVERIFIABLE/PANEL vs SATISFIED/PANEL'), ('policy:prd-sonnet', 'agree', ''), ('openai/gpt-5.4', 'agree', '')]
+DONE

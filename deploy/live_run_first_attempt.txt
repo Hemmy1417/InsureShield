@@ -1,0 +1,248 @@
+verifying evidence URLs serve the committed bytes ...
+  verified evidence/adversarial/estimate_altered.json (707 bytes)
+  verified evidence/adversarial/incident_report_delivery.txt (1088 bytes)
+  verified evidence/adversarial/invoice_malformed.json (307 bytes)
+  verified evidence/adversarial/invoice_overrun.json (872 bytes)
+  verified evidence/adversarial/invoice_predated.json (695 bytes)
+  verified evidence/adversarial/invoice_reserialized.json (602 bytes)
+  verified evidence/adversarial/ownership_selfissued.txt (227 bytes)
+  verified evidence/adversarial/photo_log_front.txt (440 bytes)
+  verified evidence/adversarial/witness_conflicting.txt (489 bytes)
+  verified evidence/adversarial/witness_date_conflict.txt (423 bytes)
+  verified evidence/adversarial/witness_injection_marker.txt (406 bytes)
+  verified evidence/adversarial/witness_injection_subtle.txt (458 bytes)
+  verified evidence/legit/incident_report.txt (973 bytes)
+  verified evidence/legit/photo_log.txt (500 bytes)
+  verified evidence/legit/repair_estimate.json (707 bytes)
+  verified evidence/legit/repair_invoice.json (827 bytes)
+  verified evidence/legit/witness_statement.txt (513 bytes)
+  unreachable as intended: evidence/moved/photo_log.txt
+  verified evidence/unusual/incident_report.txt (1058 bytes)
+  verified evidence/unusual/photo_log.txt (457 bytes)
+  verified evidence/unusual/repair_estimate.json (706 bytes)
+  verified evidence/unusual/repair_invoice.json (804 bytes)
+  verified evidence/unusual/witness_statement.txt (614 bytes)
+  verified registry/ownership_other_owner.txt (269 bytes)
+  verified registry/ownership_record.txt (270 bytes)
+insurer: 0xD65227b44f24099AF4758F0B89d6AA7904021A4b
+claimant: 0xd70f1b2C854c59FAC169a48Fb1C4C498317F729F
+fraudster: 0x01616e67A18386118c11861A1bb9a229987423B8
+stranger: 0xC19769fae025bDb860689861B87C18Ed611443CE
+
+PHASE T - the adversarial suite on-chain (policy v1)
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  insurer.create_policy tx 0x488608e9d595e3b03f7d68bbf8b65a91ad611575cc68085303204947be4d26bb
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  stranger.register_adversarial_test tx 0x38903d3ab171f4b843be85d271009257707f19c64ad6a1a1d405f5445ce5d4fd
+    FINALIZED leader ERROR votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+  insurer.register_adversarial_test tx 0x2294241bb58fe3941ca291b2194ea32344dfe774c8d5867397e368c43a9f1e48
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x393d77d2cdc14f7a16568a733316bf079ee6ebfe2a9a7ecea848e2c049d7efce
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'DISAGREE', 'IDLE']
+    L-01 VALID [] -> property HELD
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  insurer.register_adversarial_test tx 0xa0747fdf908761bbd20e05326addb07a96601b5684bcc74d9bebf688cd45c38c
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x7ab59e149610584cb8800cfa75f3c2dba90d9ff2a8a6a9ee794d6fb2f2d9da14
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+    L-02 VALID [] -> property HELD
+  insurer.register_adversarial_test tx 0xaaf23f333f663914faf6f17ebebaff5194ebb87488926f37cabcc69c51385e62
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'IDLE', 'AGREE', 'IDLE']
+  stranger.run_adversarial_test tx 0x4f8a9562961172197fb303c80d741e02b5a17fa89566b0326f2fce25efc39d67
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'IDLE', 'AGREE', 'AGREE']
+    A-01 SUSPICIOUS ['DATE_CONFLICT'] -> property HELD
+  insurer.register_adversarial_test tx 0xbafd75f0c7fb4129af39cbd7fa330fab41b039a499983dbb0c241b29ad4ca4d9
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x3267787a3b2c0eaf254957e99f24a7b29ba3bb00aaef8c667c6862f9578930a3
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    A-02 SUSPICIOUS ['ARITHMETIC_MISMATCH'] -> property HELD
+  insurer.register_adversarial_test tx 0x8fe47ca66ea5ae090f59cb94ff122b82294f733f81571789ab4ec81aea235780
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'IDLE', 'IDLE', 'AGREE']
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0xcaced9442d4934432bbc55d58e059b2632b120690a56454e8feaa284058d9917
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    A-03 SUSPICIOUS ['AMOUNT_INFLATED'] -> property HELD
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  insurer.register_adversarial_test tx 0x8ccec7ea117f10eef07c5fe8bb1a01f914ec1f4bf67a0cffb6994905ab6c6935
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'IDLE', 'AGREE']
+  stranger.run_adversarial_test tx 0xc55e89fc9086482ecf4efb444a4acb8907596652e65e1f04b2c881a9fc0538de
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'IDLE', 'AGREE']
+    A-04 SUSPICIOUS ['ESTIMATE_EXCEEDED'] -> property HELD
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  insurer.register_adversarial_test tx 0x326f31ac965b5cfa27491a4e0ef433f9d40928fbfd9616bbfa5a3c00a71e1af6
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+  stranger.run_adversarial_test tx 0xa2bdb8c99a9e09fbaf330a1fc56588bcc4404d8c6b099f521fa7c973e1bbc87f
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'DISAGREE', 'DISAGREE', 'AGREE']
+    A-07 INCONCLUSIVE ['WITNESS_CONFLICT'] -> property HELD
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_estimateGas (2/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 10s
+  insurer.register_adversarial_test tx 0x527ba82afa7abd7e99855a416daf33ed1c6fda3b9f11268a5e02e98009e58bd3
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'IDLE', 'IDLE', 'AGREE']
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  stranger.run_adversarial_test tx 0xfddd249d2dbb302f7684761a72be2d1ba03d6d6dec5ce02f5d831edaf7d72649
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'DISAGREE', 'DISAGREE']
+    A-08 INCONCLUSIVE ['WITNESS_CONFLICT'] -> property HELD
+  insurer.register_adversarial_test tx 0x4981842d409fecaf7c1b4dd65dd0c0d8adc2cb6d8d4f8db3ddae98438090041d
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+  stranger.run_adversarial_test tx 0xcf8932fa20faf1e6e90b92b7bf07391a98abe7dd7e8f0a43d9836469c02d69a2
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    A-09 INCONCLUSIVE [] -> property HELD
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionReceipt (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  insurer.register_adversarial_test tx 0xc4d2e5239480808b2ba2b9ae17d744df4cba93a4fb140f8e5b6033f55e34a65d
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on eth_getTransactionReceipt (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x6efcd62bc2bfc6fc14578f92573e4a39ed7d3b333cb5b1577868226e64a79949
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'IDLE', 'AGREE']
+    A-10 SUSPICIOUS ['OWNERSHIP_MISMATCH'] -> property HELD
+  insurer.register_adversarial_test tx 0xbf9c0d97fa15998898c121b2bb8c32d20a5c7d2a29868b903c07b8650d2933bd
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+  stranger.run_adversarial_test tx 0x75de0be37b105e42db486a68b5e8010f5f673f7d37a96ec0467201d182429b98
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'IDLE', 'IDLE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    A-11 SUSPICIOUS ['DAMAGE_MISMATCH'] -> property HELD
+  insurer.register_adversarial_test tx 0x4d8c10568fe679ba297006f5f41f126c3257dc77806b0d0949eb3f6c451cd8e3
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'IDLE', 'AGREE']
+  stranger.run_adversarial_test tx 0x02019f2ece1ff72ecb5e62925bdc85ce32e1682c637aadc89aadc28259d028cf
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    A-12 SUSPICIOUS ['INJECTION_MARKER'] -> property HELD
+  insurer.register_adversarial_test tx 0xc0ec1db5eda9d6fb63dffab0c5eb1e9c41a8c8264d89b30ecada5a8890195002
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+  stranger.run_adversarial_test tx 0x0562a450065689b44e7455b15d352d75e6c0ef4d4f2aeeb333e10b7e15a09ce5
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+    A-13 SUSPICIOUS ['INSTRUCTION_INJECTION'] -> property HELD
+  insurer.register_adversarial_test tx 0xd2cda24588e22247b739c7286c84fa3647f828e27975bb5bdd5a84d0ba5a918f
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    rpc transient on eth_sendRawTransaction (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0xd3039d79612d66cabe8b505a0d1cd1d0b3580a68c009bd3579754f1b0693a68f
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'IDLE', 'AGREE']
+    A-14 INCONCLUSIVE [] -> property HELD
+  insurer.register_adversarial_test tx 0x1474b7e1712279c91f08bc7a693fa2c7d8a3f17cfb60a229a510799b14076531
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'AGREE', 'IDLE']
+  stranger.run_adversarial_test tx 0x943a0a40c202c5969cedf6044d2d3de868d34285fbca62e138c574551ed01c64
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    A-15 UNAVAILABLE [] -> property HELD
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  insurer.register_adversarial_test tx 0x62b9102c5a8e3c56c46a4d154e9bb4638b711cf6fc32b1257cf1f36ecba33f43
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'AGREE', 'IDLE']
+  stranger.run_adversarial_test tx 0x62b7403f745032f9019c82097353b2cb55e1bb38d23128fd3dc375551a58ccc7
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'IDLE', 'AGREE']
+    A-16 UNAVAILABLE [] -> property HELD
+  insurer.register_adversarial_test tx 0x334f10e650c931f4064511720f4dbc3ddc0d69e621b80dcd09b577d1be47e507
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on gen_call (2/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 10s
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x864c59e6334ddecd25c47335a8ef4699151093f2709d08b6362331a2a2731c5f
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    A-18 INCONCLUSIVE [] -> property HELD
+  insurer.register_adversarial_test tx 0x72329a3249086b0f13ada51df575f3588a732e34efc72601b0330427cff31d2a
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+  stranger.run_adversarial_test tx 0xa663fa73c9486a6074b12e1b9bc445a4247c58d80ec76f00250172c6da8856e0
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    A-19 REJECTED [] -> property HELD
+
+PHASE R - evaluating a rule change against recorded attacks
+  stranger.publish_policy_version tx 0xde9a054b5970c7c7a4aa3455f2acde368dcf22f25a7f9fe23ef77998c8951afe
+    FINALIZED leader ERROR votes ['IDLE', 'AGREE', 'IDLE', 'AGREE', 'AGREE']
+  insurer.publish_policy_version tx 0xf288306e4bd02a7ff56d1459b3a815ddcedbd9da9c8247c8410dd293c9fa89b8
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'IDLE', 'AGREE']
+  insurer.replay_adversarial_test tx 0x8e9bef80a7db072dffbbad2b67f3c12548d6af05b1662bc10b7c3554c0fafa6b
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+  stranger.run_adversarial_test tx 0x59dafe82672022d86abbb01679e8da3197c62e62eb48eac850189e3c1e4661fc
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    L-01 SUSPICIOUS ['ESTIMATE_EXCEEDED'] -> property NOT HELD
+  v2 flags the legitimate baseline: the change would create a false positive
+  insurer.publish_policy_version tx 0x50ce0ab3ab2c10d3b76695741e297f3b80d0f8a0d17838d900d62db888a3b7e8
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+  insurer.replay_adversarial_test tx 0xdcec3a2a4725c566fbe8b043df1df1e52fccb53710c4a2004a059c9b62c8f2ba
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'AGREE', 'IDLE']
+  stranger.run_adversarial_test tx 0xfe3b1bf1364e8cc321ee8f85f929908cd7a914061f7a3e04e8d602c2aa381380
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'AGREE', 'IDLE']
+    rpc transient on gen_call (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    L-01 VALID [] -> property HELD
+  insurer.replay_adversarial_test tx 0x2e2dad2b5383de01337243f39202b0b573e4c07fb6e19df7a5a965f0b3ee5a49
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'AGREE', 'AGREE']
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.run_adversarial_test tx 0x77d5ef9693c482d42d072b9984cba31aff0d58260d984d3077742f5c3fcf3735
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'AGREE', 'IDLE', 'IDLE']
+    A-04 SUSPICIOUS ['ESTIMATE_EXCEEDED'] -> property HELD
+
+PHASE C - real claims on policy v3
+    rpc transient on eth_estimateGas (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  claimant.submit_claim tx 0x64d1d1ce7da85b76c06806dc630f05776ffc771fd00d8b7ac734ec8814bf93b4
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'IDLE', 'AGREE', 'AGREE']
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    rpc transient on sim_getConsensusContract (2/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 10s
+  stranger.resolve_claim tx 0x49af8b65a5c256a9f7d0c1ce9a5d2bae03c82b6643df88ca7d4a82f527ca3cc5
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'AGREE', 'IDLE']
+    CLM-000001 RESOLVED VALID [] ['ALL_CRITERIA_SATISFIED']
+    outcome: {'claim_id': 'CLM-000001', 'confidence_band': 'HIGH', 'consumable': True, 'definition_hash': 'cf81806623c3348adff55d1027fcf54f483438a9e6d152cde1d56c8f68a8bbc6', 'duplicate_of': '', 'failure_class': 'NONE', 'found': True, 'freshness': 'RELIABLE', 'latest_receipt_id': 'CLM-000001-R1', 'policy_id': 'POL-000001', 'policy_version': 3, 'severity': 'NONE', 'status': 'RESOLVED', 'verdict': 'VALID'}
+  stranger.resolve_claim tx 0x9edd62fb6add268a52869c0e4a08f4e8887ce7b129291e71b5685133569005b0
+    FINALIZED leader ERROR votes ['AGREE', 'IDLE', 'AGREE', 'IDLE', 'AGREE']
+  fraudster.submit_claim tx 0x63d0cdbe3c923f492922eab7078c9a5fb7ffd892f0744eaade0bdd4b1d0ab107
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'AGREE', 'IDLE', 'IDLE', 'AGREE']
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+  stranger.resolve_claim tx 0x46bd5db57f313b0e2d8e4916308fd48d12ec2d280420762c7ad132acc64ff96f
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'IDLE', 'AGREE', 'AGREE']
+    CLM-000002 RESOLVED SUSPICIOUS ['DUPLICATE_EVIDENCE', 'DUPLICATE_DOCUMENT'] ['INDICATOR:DUPLICATE_EVIDENCE', 'INDICATOR:DUPLICATE_DOCUMENT']
+  claimant.submit_claim tx 0xfd9d9be894815b9a3280e82be5f0c24724f592347c27ce3062da1b23efbeeafc
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['IDLE', 'AGREE', 'AGREE', 'IDLE', 'AGREE']
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: ('Connection aborted.', RemoteDisconnec; retry in 5s
+  stranger.resolve_claim tx 0x8f2219302f7aedd4fa9a7a256484ea628e471d43fc0159491e431f01b09cac91
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionByHash (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    FINALIZED leader SUCCESS votes ['AGREE', 'IDLE', 'AGREE', 'IDLE', 'AGREE']
+    CLM-000003 RETRYABLE UNAVAILABLE [] ['ROW:E6:UNAVAILABLE', 'EXCLUSION:X1:UNVERIFIABLE', 'EXCLUSION:X2:UNVERIFIABLE', 'CRITERION:C3:UNVERIFIABLE', 'CRITERION:C4:UNVERIFIABLE', 'CRITERION:C5:UNVERIFIABLE', 'PANEL:SKIPPED:EVIDENCE_NOT_EXAMINED']
+  fraudster.retry_claim tx 0x3f8ba824f2cfe8c416b253af72d9be0e71cb67561cc01ecb6a0619355c38a97f
+    FINALIZED leader ERROR votes ['IDLE', 'IDLE', 'AGREE', 'AGREE', 'AGREE']
+    waiting out the retry cooldown (policy: 60 s)
+    rpc transient on sim_getConsensusContract (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on sim_getConsensusContract (2/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 10s
+    rpc transient on sim_getConsensusContract (3/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 20s
+    rpc transient on sim_getConsensusContract (4/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 40s
+    rpc transient on sim_getConsensusContract (5/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s
+    rpc transient on sim_getConsensusContract (6/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s
+    rpc transient on sim_getConsensusContract (7/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s
+    rpc transient on eth_getTransactionCount (1/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 5s
+    rpc transient on eth_getTransactionCount (2/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 10s
+    rpc transient on eth_getTransactionCount (3/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 20s
+    rpc transient on eth_getTransactionCount (4/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 40s
+    rpc transient on eth_getTransactionCount (5/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s
+    rpc transient on eth_getTransactionCount (6/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s
+    rpc transient on eth_getTransactionCount (7/8): Request to https://studio.genlayer.com/api failed: HTTPSConnectionPool(host='studio.genlay; retry in 60s

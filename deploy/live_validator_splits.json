@@ -1,0 +1,23 @@
+{
+  "L-01": {
+    "tx": "0x393d77d2cdc14f7a16568a733316bf079ee6ebfe2a9a7ecea848e2c049d7efce",
+    "lines": [
+      "validator policy:prd-mistral: [DOWNGRADE] C4 SATISFIED: no quote grounded; raw [{'evidence_id': 'E4', 'text': 'VIN: JTDBR32E720123456\\nMake / model: Toyota Corolla 1.8 Hybrid\\nRegistered keeper: Amara Okafor'}]",
+      "validator policy:prd-mistral: [DISAGREE] own vs leader: C4 UNVERIFIABLE/PANEL vs SATISFIED/PANEL"
+    ]
+  },
+  "A-07": {
+    "tx": "0xa2bdb8c99a9e09fbaf330a1fc56588bcc4404d8c6b099f521fa7c973e1bbc87f",
+    "lines": [
+      "validator policy:prd-glm: [DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL",
+      "validator policy:prd-sonnet: [DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL"
+    ]
+  },
+  "A-08": {
+    "tx": "0xfddd249d2dbb302f7684761a72be2d1ba03d6d6dec5ce02f5d831edaf7d72649",
+    "lines": [
+      "validator policy:prd-grok: [DISAGREE] own vs leader: NARRATIVE_CONTRADICTION PRESENT/PANEL vs ABSENT/PANEL",
+      "validator policy:prd-gemma: [DISAGREE] own vs leader: C3 UNVERIFIABLE/PANEL vs SATISFIED/PANEL"
+    ]
+  }
+}

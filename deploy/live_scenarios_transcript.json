@@ -1,0 +1,2923 @@
+{
+  "accounts": {
+    "claimant": "0xd70f1b2C854c59FAC169a48Fb1C4C498317F729F",
+    "fraudster": "0x01616e67A18386118c11861A1bb9a229987423B8",
+    "insurer": "0xD65227b44f24099AF4758F0B89d6AA7904021A4b",
+    "stranger": "0xC19769fae025bDb860689861B87C18Ed611443CE"
+  },
+  "contract": "0x638f5610288d292Fac9DfdD53d094Da0c38c5299",
+  "network": "studionet",
+  "phases": {
+    "C": {
+      "duplicate_claim_id": "CLM-000002",
+      "duplicate_resolve": {
+        "created_at": "2026-09-11T01:46:20.779973+00:00",
+        "leader_execution": "SUCCESS",
+        "receipt": {
+          "confidence_band": "HIGH",
+          "criteria": [
+            [
+              "C1",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C2",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C3",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C4",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C5",
+              "SATISFIED",
+              "PANEL"
+            ]
+          ],
+          "exclusions": [
+            [
+              "X1",
+              "DOES_NOT_APPLY"
+            ],
+            [
+              "X2",
+              "DOES_NOT_APPLY"
+            ]
+          ],
+          "failure_class": "NONE",
+          "panel_reason": "",
+          "panel_state": "ASSESSED",
+          "present": [
+            "DUPLICATE_EVIDENCE",
+            "DUPLICATE_DOCUMENT"
+          ],
+          "reason_codes": [
+            "INDICATOR:DUPLICATE_EVIDENCE",
+            "INDICATOR:DUPLICATE_DOCUMENT"
+          ],
+          "record_digest": "5a298f2a90f521448fb86c3e32d0ff03b798ce59c184d7fd431e31efd41607c1",
+          "rows": [
+            [
+              "E1",
+              "EXAMINED"
+            ],
+            [
+              "E2",
+              "EXAMINED"
+            ],
+            [
+              "E3",
+              "EXAMINED"
+            ],
+            [
+              "E4",
+              "EXAMINED"
+            ],
+            [
+              "E5",
+              "EXAMINED"
+            ],
+            [
+              "E6",
+              "EXAMINED"
+            ]
+          ],
+          "severity": "CRITICAL",
+          "verdict": "SUSPICIOUS"
+        },
+        "status": "FINALIZED",
+        "tx": "0x46bd5db57f313b0e2d8e4916308fd48d12ec2d280420762c7ad132acc64ff96f",
+        "votes": [
+          "AGREE",
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "IDLE"
+        ]
+      },
+      "duplicate_submit": {
+        "created_at": "2026-09-11T01:45:28.736716+00:00",
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0x63d0cdbe3c923f492922eab7078c9a5fb7ffd892f0744eaade0bdd4b1d0ab107",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "AGREE",
+          "IDLE"
+        ]
+      },
+      "legit_claim_id": "CLM-000001",
+      "legit_outcome": {
+        "claim_id": "CLM-000001",
+        "confidence_band": "HIGH",
+        "consumable": true,
+        "definition_hash": "cf81806623c3348adff55d1027fcf54f483438a9e6d152cde1d56c8f68a8bbc6",
+        "duplicate_of": "",
+        "failure_class": "NONE",
+        "found": true,
+        "freshness": "RELIABLE",
+        "latest_receipt_id": "CLM-000001-R1",
+        "policy_id": "POL-000001",
+        "policy_version": 3,
+        "severity": "NONE",
+        "status": "RESOLVED",
+        "verdict": "VALID"
+      },
+      "legit_outcome_read_at": "2026-09-11T05:48:55Z",
+      "legit_resolve": {
+        "created_at": "2026-09-11T01:43:05.538808+00:00",
+        "leader_execution": "SUCCESS",
+        "receipt": {
+          "confidence_band": "HIGH",
+          "criteria": [
+            [
+              "C1",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C2",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C3",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C4",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C5",
+              "SATISFIED",
+              "PANEL"
+            ]
+          ],
+          "exclusions": [
+            [
+              "X1",
+              "DOES_NOT_APPLY"
+            ],
+            [
+              "X2",
+              "DOES_NOT_APPLY"
+            ]
+          ],
+          "failure_class": "NONE",
+          "panel_reason": "",
+          "panel_state": "ASSESSED",
+          "present": [],
+          "reason_codes": [
+            "ALL_CRITERIA_SATISFIED"
+          ],
+          "record_digest": "07319163391ab07f4dfd889cdb1c1edc38fbc9d393ccd28270383bc2690b7c91",
+          "rows": [
+            [
+              "E1",
+              "EXAMINED"
+            ],
+            [
+              "E2",
+              "EXAMINED"
+            ],
+            [
+              "E3",
+              "EXAMINED"
+            ],
+            [
+              "E4",
+              "EXAMINED"
+            ],
+            [
+              "E5",
+              "EXAMINED"
+            ],
+            [
+              "E6",
+              "EXAMINED"
+            ]
+          ],
+          "severity": "NONE",
+          "verdict": "VALID"
+        },
+        "status": "FINALIZED",
+        "tx": "0x49af8b65a5c256a9f7d0c1ce9a5d2bae03c82b6643df88ca7d4a82f527ca3cc5",
+        "votes": [
+          "AGREE",
+          "IDLE",
+          "IDLE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "legit_submit": {
+        "created_at": "2026-09-11T01:42:07.123445+00:00",
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0x64d1d1ce7da85b76c06806dc630f05776ffc771fd00d8b7ac734ec8814bf93b4",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "IDLE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "recovered_from_chain": true,
+      "recovery_note": "The first run stopped when the StudioNet RPC stopped accepting connections for several minutes, before the relocation retry was sent. These records were rebuilt from sim_getTransactionsForAddress and the contract views; the remaining steps ran after.",
+      "refusal_resolve_twice": {
+        "created_at": "2026-09-11T01:44:44.895620+00:00",
+        "leader_execution": "ERROR",
+        "status": "FINALIZED",
+        "tx": "0x9edd62fb6add268a52869c0e4a08f4e8887ce7b129291e71b5685133569005b0",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "AGREE",
+          "IDLE"
+        ]
+      },
+      "refusal_stranger_retries": {
+        "created_at": "2026-09-11T01:50:10.928317+00:00",
+        "leader_execution": "ERROR",
+        "status": "FINALIZED",
+        "tx": "0x3f8ba824f2cfe8c416b253af72d9be0e71cb67561cc01ecb6a0619355c38a97f",
+        "votes": [
+          "AGREE",
+          "AGREE",
+          "IDLE",
+          "IDLE",
+          "AGREE"
+        ]
+      },
+      "relocation_claim_id": "CLM-000003",
+      "relocation_retry": {
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0xecf714bc893abe8d051a1b7993801858a7703d960643521452b9baba8922bbd3",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "AGREE",
+          "IDLE"
+        ]
+      },
+      "relocation_round_1": {
+        "claim_status": "RETRYABLE",
+        "created_at": "2026-09-11T01:49:19.495307+00:00",
+        "leader_execution": "SUCCESS",
+        "receipt": {
+          "confidence_band": "LOW",
+          "criteria": [
+            [
+              "C1",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C2",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C3",
+              "UNVERIFIABLE",
+              "CODE"
+            ],
+            [
+              "C4",
+              "UNVERIFIABLE",
+              "CODE"
+            ],
+            [
+              "C5",
+              "UNVERIFIABLE",
+              "CODE"
+            ]
+          ],
+          "exclusions": [
+            [
+              "X1",
+              "UNVERIFIABLE"
+            ],
+            [
+              "X2",
+              "UNVERIFIABLE"
+            ]
+          ],
+          "failure_class": "EVIDENCE_UNREACHABLE",
+          "panel_reason": "EVIDENCE_NOT_EXAMINED",
+          "panel_state": "SKIPPED",
+          "present": [],
+          "reason_codes": [
+            "ROW:E6:UNAVAILABLE",
+            "EXCLUSION:X1:UNVERIFIABLE",
+            "EXCLUSION:X2:UNVERIFIABLE",
+            "CRITERION:C3:UNVERIFIABLE",
+            "CRITERION:C4:UNVERIFIABLE",
+            "CRITERION:C5:UNVERIFIABLE",
+            "PANEL:SKIPPED:EVIDENCE_NOT_EXAMINED"
+          ],
+          "record_digest": "b3a2244506a93a29ade79ef2f719a99322866fc2117c6f06db75454f4b937803",
+          "rows": [
+            [
+              "E1",
+              "EXAMINED"
+            ],
+            [
+              "E2",
+              "EXAMINED"
+            ],
+            [
+              "E3",
+              "EXAMINED"
+            ],
+            [
+              "E4",
+              "EXAMINED"
+            ],
+            [
+              "E5",
+              "EXAMINED"
+            ],
+            [
+              "E6",
+              "UNAVAILABLE"
+            ]
+          ],
+          "severity": "LOW",
+          "verdict": "UNAVAILABLE"
+        },
+        "status": "FINALIZED",
+        "tx": "0x8f2219302f7aedd4fa9a7a256484ea628e471d43fc0159491e431f01b09cac91",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "IDLE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "relocation_round_2": {
+        "claim_status": "RESOLVED",
+        "leader_execution": "SUCCESS",
+        "receipt": {
+          "confidence_band": "HIGH",
+          "criteria": [
+            [
+              "C1",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C2",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C3",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C4",
+              "SATISFIED",
+              "PANEL"
+            ],
+            [
+              "C5",
+              "SATISFIED",
+              "PANEL"
+            ]
+          ],
+          "exclusions": [
+            [
+              "X1",
+              "DOES_NOT_APPLY"
+            ],
+            [
+              "X2",
+              "DOES_NOT_APPLY"
+            ]
+          ],
+          "failure_class": "NONE",
+          "panel_reason": "",
+          "panel_state": "ASSESSED",
+          "present": [],
+          "reason_codes": [
+            "ALL_CRITERIA_SATISFIED"
+          ],
+          "record_digest": "8ebf0850806394a554bc2377c1074a38c0889509dec723467d0ffeebdbce9508",
+          "rows": [
+            [
+              "E1",
+              "EXAMINED"
+            ],
+            [
+              "E2",
+              "EXAMINED"
+            ],
+            [
+              "E3",
+              "EXAMINED"
+            ],
+            [
+              "E4",
+              "EXAMINED"
+            ],
+            [
+              "E5",
+              "EXAMINED"
+            ],
+            [
+              "E6",
+              "EXAMINED"
+            ]
+          ],
+          "severity": "NONE",
+          "verdict": "VALID"
+        },
+        "status": "FINALIZED",
+        "tx": "0x1d14e53a99ac357d4af52a2b970dc572a452d3d8ce2ddde2f6ed5f4b97ec2668",
+        "votes": [
+          "AGREE",
+          "AGREE",
+          "IDLE",
+          "AGREE",
+          "IDLE"
+        ]
+      },
+      "relocation_submit": {
+        "created_at": "2026-09-11T01:48:33.251129+00:00",
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0xfd9d9be894815b9a3280e82be5f0c24724f592347c27ce3062da1b23efbeeafc",
+        "votes": [
+          "IDLE",
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "AGREE"
+        ]
+      }
+    },
+    "R": {
+      "baseline_on_v2": {
+        "case_id": "L-01",
+        "decided_by": "PANEL",
+        "expected_indicators": [],
+        "expected_property": "VERDICT_VALID",
+        "observed_indicators": [
+          "ESTIMATE_EXCEEDED"
+        ],
+        "observed_verdict": "SUSPICIOUS",
+        "passed": false,
+        "receipt": {
+          "confidence_band": "MEDIUM",
+          "criteria": [
+            [
+              "C1",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C2",
+              "SATISFIED",
+              "CODE"
+            ],
+            [
+              "C3",
+              "UNVERIFIABLE",
+              "CODE"
+            ],
+            [
+              "C4",
+              "UNVERIFIABLE",
+              "CODE"
+            ],
+            [
+              "C5",
+              "UNVERIFIABLE",
+              "CODE"
+            ]
+          ],
+          "exclusions": [
+            [
+              "X1",
+              "UNVERIFIABLE"
+            ],
+            [
+              "X2",
+              "UNVERIFIABLE"
+            ]
+          ],
+          "failure_class": "NONE",
+          "panel_reason": "HARD_FACT_PRESENT",
+          "panel_state": "SKIPPED",
+          "present": [
+            "ESTIMATE_EXCEEDED"
+          ],
+          "reason_codes": [
+            "INDICATOR:ESTIMATE_EXCEEDED",
+            "EXCLUSION:X1:UNVERIFIABLE",
+            "EXCLUSION:X2:UNVERIFIABLE",
+            "CRITERION:C3:UNVERIFIABLE",
+            "CRITERION:C4:UNVERIFIABLE",
+            "CRITERION:C5:UNVERIFIABLE",
+            "PANEL:SKIPPED:HARD_FACT_PRESENT"
+          ],
+          "record_digest": "4b530e06c0673cd38ea60d4733a35482beefbc54c27f657ea3a3a78ca70e9e6b",
+          "rows": [
+            [
+              "E1",
+              "EXAMINED"
+            ],
+            [
+              "E2",
+              "EXAMINED"
+            ],
+            [
+              "E3",
+              "EXAMINED"
+            ],
+            [
+              "E4",
+              "EXAMINED"
+            ],
+            [
+              "E5",
+              "EXAMINED"
+            ],
+            [
+              "E6",
+              "EXAMINED"
+            ]
+          ],
+          "severity": "CRITICAL",
+          "verdict": "SUSPICIOUS"
+        },
+        "replay": {
+          "leader_execution": "SUCCESS",
+          "status": "FINALIZED",
+          "tx": "0x8e9bef80a7db072dffbbad2b67f3c12548d6af05b1662bc10b7c3554c0fafa6b",
+          "votes": [
+            "AGREE",
+            "IDLE",
+            "IDLE",
+            "AGREE",
+            "AGREE"
+          ]
+        },
+        "run": {
+          "leader_execution": "SUCCESS",
+          "status": "FINALIZED",
+          "tx": "0x59dafe82672022d86abbb01679e8da3197c62e62eb48eac850189e3c1e4661fc",
+          "votes": [
+            "IDLE",
+            "IDLE",
+            "AGREE",
+            "AGREE",
+            "AGREE"
+          ]
+        },
+        "test_id": "AT-000019"
+      },
+      "on_v3": [
+        {
+          "case_id": "L-01",
+          "decided_by": "PANEL",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_VALID",
+          "observed_indicators": [],
+          "observed_verdict": "VALID",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [],
+            "reason_codes": [
+              "ALL_CRITERIA_SATISFIED"
+            ],
+            "record_digest": "93d8f5407b7f3f00d0fe1eafece72eebd738831cae0cf747d827602d00d13a5a",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "NONE",
+            "verdict": "VALID"
+          },
+          "replay": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xdcec3a2a4725c566fbe8b043df1df1e52fccb53710c4a2004a059c9b62c8f2ba",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xfe3b1bf1364e8cc321ee8f85f929908cd7a914061f7a3e04e8d602c2aa381380",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "test_id": "AT-000020"
+        },
+        {
+          "case_id": "A-04",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "ESTIMATE_EXCEEDED"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "ESTIMATE_EXCEEDED"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "ESTIMATE_EXCEEDED"
+            ],
+            "reason_codes": [
+              "INDICATOR:ESTIMATE_EXCEEDED",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "0d00a979828839e01e95abc29e027ebe50123896f94d325acdf38d887b596e98",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "replay": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x2e2dad2b5383de01337243f39202b0b573e4c07fb6e19df7a5a965f0b3ee5a49",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x77d5ef9693c482d42d072b9984cba31aff0d58260d984d3077742f5c3fcf3735",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "IDLE"
+            ]
+          },
+          "test_id": "AT-000021"
+        }
+      ],
+      "publish_v2": {
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0xf288306e4bd02a7ff56d1459b3a815ddcedbd9da9c8247c8410dd293c9fa89b8",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "IDLE",
+          "AGREE"
+        ]
+      },
+      "publish_v3": {
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0x50ce0ab3ab2c10d3b76695741e297f3b80d0f8a0d17838d900d62db888a3b7e8",
+        "votes": [
+          "IDLE",
+          "IDLE",
+          "AGREE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "refusal_stranger_publishes": {
+        "leader_execution": "ERROR",
+        "status": "FINALIZED",
+        "tx": "0xde9a054b5970c7c7a4aa3455f2acde368dcf22f25a7f9fe23ef77998c8951afe",
+        "votes": [
+          "IDLE",
+          "AGREE",
+          "IDLE",
+          "AGREE",
+          "AGREE"
+        ]
+      }
+    },
+    "T": {
+      "create_policy": {
+        "leader_execution": "SUCCESS",
+        "status": "FINALIZED",
+        "tx": "0x488608e9d595e3b03f7d68bbf8b65a91ad611575cc68085303204947be4d26bb",
+        "votes": [
+          "AGREE",
+          "IDLE",
+          "IDLE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "definition_hash_v1": "59f386017b2631824baa66bb2ed0d48550c3b24a6497c9255229159964ff1eb2",
+      "policy_id": "POL-000001",
+      "refusal_stranger_registers_test": {
+        "leader_execution": "ERROR",
+        "status": "FINALIZED",
+        "tx": "0x38903d3ab171f4b843be85d271009257707f19c64ad6a1a1d405f5445ce5d4fd",
+        "votes": [
+          "AGREE",
+          "AGREE",
+          "AGREE",
+          "AGREE",
+          "AGREE"
+        ]
+      },
+      "tests": [
+        {
+          "case_id": "L-01",
+          "decided_by": "PANEL",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_VALID",
+          "observed_indicators": [],
+          "observed_verdict": "VALID",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [],
+            "reason_codes": [
+              "ALL_CRITERIA_SATISFIED"
+            ],
+            "record_digest": "cdea5f5437081d99fe12993246ac322a2d0dde5663f21ed78a82650169679950",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "NONE",
+            "verdict": "VALID"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x2294241bb58fe3941ca291b2194ea32344dfe774c8d5867397e368c43a9f1e48",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x393d77d2cdc14f7a16568a733316bf079ee6ebfe2a9a7ecea848e2c049d7efce",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "DISAGREE",
+              "IDLE"
+            ]
+          },
+          "test_id": "AT-000001"
+        },
+        {
+          "case_id": "L-02",
+          "decided_by": "PANEL",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_VALID",
+          "observed_indicators": [],
+          "observed_verdict": "VALID",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [],
+            "reason_codes": [
+              "ALL_CRITERIA_SATISFIED"
+            ],
+            "record_digest": "9441928caf63e71750dcedff7a6530e5aaec7534fccdbd6e616cf8614edcafc2",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "NONE",
+            "verdict": "VALID"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xa0747fdf908761bbd20e05326addb07a96601b5684bcc74d9bebf688cd45c38c",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x7ab59e149610584cb8800cfa75f3c2dba90d9ff2a8a6a9ee794d6fb2f2d9da14",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "test_id": "AT-000002"
+        },
+        {
+          "case_id": "A-01",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "DATE_CONFLICT"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "DATE_CONFLICT"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "DATE_CONFLICT"
+            ],
+            "reason_codes": [
+              "INDICATOR:DATE_CONFLICT",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "276895e0c2e65414f51eaf5aa2c22bb54304bdeb5ec791e70cbfded2dc6cf538",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xaaf23f333f663914faf6f17ebebaff5194ebb87488926f37cabcc69c51385e62",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x4f8a9562961172197fb303c80d741e02b5a17fa89566b0326f2fce25efc39d67",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000003"
+        },
+        {
+          "case_id": "A-02",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "ARITHMETIC_MISMATCH"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "ARITHMETIC_MISMATCH"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "ARITHMETIC_MISMATCH"
+            ],
+            "reason_codes": [
+              "INDICATOR:ARITHMETIC_MISMATCH",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "ed825290bcb439d074c98f7a475c04bee29075a5ab04ede3748bf8b99d8a0e60",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xbafd75f0c7fb4129af39cbd7fa330fab41b039a499983dbb0c241b29ad4ca4d9",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x3267787a3b2c0eaf254957e99f24a7b29ba3bb00aaef8c667c6862f9578930a3",
+            "votes": [
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000004"
+        },
+        {
+          "case_id": "A-03",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "AMOUNT_INFLATED"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "AMOUNT_INFLATED"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "NOT_SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "AMOUNT_INFLATED"
+            ],
+            "reason_codes": [
+              "INDICATOR:AMOUNT_INFLATED",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C2:NOT_SATISFIED",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "0f551cdf9f35c9a456ad5ff51083bc692ed6348f72611833ce54120c6129d87b",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x8fe47ca66ea5ae090f59cb94ff122b82294f733f81571789ab4ec81aea235780",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xcaced9442d4934432bbc55d58e059b2632b120690a56454e8feaa284058d9917",
+            "votes": [
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000005"
+        },
+        {
+          "case_id": "A-04",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "ESTIMATE_EXCEEDED"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "ESTIMATE_EXCEEDED"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "ESTIMATE_EXCEEDED"
+            ],
+            "reason_codes": [
+              "INDICATOR:ESTIMATE_EXCEEDED",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "7a6f00d3b5a43f403695c1156bb7e2e1ea1fb5c5607ba874debec00f746aa273",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x8ccec7ea117f10eef07c5fe8bb1a01f914ec1f4bf67a0cffb6994905ab6c6935",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xc55e89fc9086482ecf4efb444a4acb8907596652e65e1f04b2c881a9fc0538de",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000006"
+        },
+        {
+          "case_id": "A-07",
+          "decided_by": "PANEL",
+          "expected_indicators": [
+            "WITNESS_CONFLICT"
+          ],
+          "expected_property": "VERDICT_INCONCLUSIVE",
+          "observed_indicators": [
+            "WITNESS_CONFLICT"
+          ],
+          "observed_verdict": "INCONCLUSIVE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "CONTRADICTORY_EVIDENCE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [
+              "WITNESS_CONFLICT"
+            ],
+            "reason_codes": [
+              "INDICATOR:WITNESS_CONFLICT"
+            ],
+            "record_digest": "509c7e3fd7de75c20b2370fa122d91f01d4fe94f5169175d9962dd6b6babd19c",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "MEDIUM",
+            "verdict": "INCONCLUSIVE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x326f31ac965b5cfa27491a4e0ef433f9d40928fbfd9616bbfa5a3c00a71e1af6",
+            "votes": [
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xa2bdb8c99a9e09fbaf330a1fc56588bcc4404d8c6b099f521fa7c973e1bbc87f",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "DISAGREE",
+              "DISAGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000007"
+        },
+        {
+          "case_id": "A-08",
+          "decided_by": "PANEL",
+          "expected_indicators": [
+            "WITNESS_CONFLICT"
+          ],
+          "expected_property": "VERDICT_INCONCLUSIVE",
+          "observed_indicators": [
+            "WITNESS_CONFLICT"
+          ],
+          "observed_verdict": "INCONCLUSIVE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "CONTRADICTORY_EVIDENCE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [
+              "WITNESS_CONFLICT"
+            ],
+            "reason_codes": [
+              "INDICATOR:WITNESS_CONFLICT"
+            ],
+            "record_digest": "5eea47ff6588defa779f6f8955751366ff227970ba532a58d05e81273aecfbfa",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "MEDIUM",
+            "verdict": "INCONCLUSIVE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x527ba82afa7abd7e99855a416daf33ed1c6fda3b9f11268a5e02e98009e58bd3",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xfddd249d2dbb302f7684761a72be2d1ba03d6d6dec5ce02f5d831edaf7d72649",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "DISAGREE",
+              "DISAGREE"
+            ]
+          },
+          "test_id": "AT-000008"
+        },
+        {
+          "case_id": "A-09",
+          "decided_by": "CODE",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_INCONCLUSIVE",
+          "observed_indicators": [],
+          "observed_verdict": "INCONCLUSIVE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "INSUFFICIENT_EVIDENCE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [],
+            "reason_codes": [
+              "CRITERION:C4:UNVERIFIABLE"
+            ],
+            "record_digest": "e8be53a241c9e7de24ca5feea9b52c14967c6001d677e4f19f637763fc267db6",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "LOW",
+            "verdict": "INCONCLUSIVE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x4981842d409fecaf7c1b4dd65dd0c0d8adc2cb6d8d4f8db3ddae98438090041d",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xcf8932fa20faf1e6e90b92b7bf07391a98abe7dd7e8f0a43d9836469c02d69a2",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000009"
+        },
+        {
+          "case_id": "A-10",
+          "decided_by": "PANEL",
+          "expected_indicators": [
+            "OWNERSHIP_MISMATCH"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "OWNERSHIP_MISMATCH"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "NOT_SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [
+              "OWNERSHIP_MISMATCH"
+            ],
+            "reason_codes": [
+              "INDICATOR:OWNERSHIP_MISMATCH",
+              "CRITERION:C4:NOT_SATISFIED"
+            ],
+            "record_digest": "27b40a5d39413d9f3aeefedeecbffc98d0772612d534812725fcc878bf29f7b1",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "HIGH",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xc4d2e5239480808b2ba2b9ae17d744df4cba93a4fb140f8e5b6033f55e34a65d",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x6efcd62bc2bfc6fc14578f92573e4a39ed7d3b333cb5b1577868226e64a79949",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000010"
+        },
+        {
+          "case_id": "A-11",
+          "decided_by": "PANEL",
+          "expected_indicators": [
+            "DAMAGE_MISMATCH"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "DAMAGE_MISMATCH"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [
+              "DAMAGE_MISMATCH"
+            ],
+            "reason_codes": [
+              "INDICATOR:DAMAGE_MISMATCH"
+            ],
+            "record_digest": "b001ef3f2bd75f0f39f218e391fdb6070a521f753b1f04fa604ed0210aee945b",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "HIGH",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xbf9c0d97fa15998898c121b2bb8c32d20a5c7d2a29868b903c07b8650d2933bd",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x75de0be37b105e42db486a68b5e8010f5f673f7d37a96ec0467201d182429b98",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000011"
+        },
+        {
+          "case_id": "A-12",
+          "decided_by": "CODE",
+          "expected_indicators": [
+            "INJECTION_MARKER"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "INJECTION_MARKER"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "HARD_FACT_PRESENT",
+            "panel_state": "SKIPPED",
+            "present": [
+              "INJECTION_MARKER"
+            ],
+            "reason_codes": [
+              "INDICATOR:INJECTION_MARKER",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:HARD_FACT_PRESENT"
+            ],
+            "record_digest": "b2e22d1197e738ad3ae13b461ac4c3dfc69e59345b1b478c31dac9bdbc738088",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "CRITICAL",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x4d8c10568fe679ba297006f5f41f126c3257dc77806b0d0949eb3f6c451cd8e3",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x02019f2ece1ff72ecb5e62925bdc85ce32e1682c637aadc89aadc28259d028cf",
+            "votes": [
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000012"
+        },
+        {
+          "case_id": "A-13",
+          "decided_by": "PANEL",
+          "expected_indicators": [
+            "INSTRUCTION_INJECTION"
+          ],
+          "expected_property": "VERDICT_SUSPICIOUS",
+          "observed_indicators": [
+            "INSTRUCTION_INJECTION"
+          ],
+          "observed_verdict": "SUSPICIOUS",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "NONE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [
+              "INSTRUCTION_INJECTION"
+            ],
+            "reason_codes": [
+              "INDICATOR:INSTRUCTION_INJECTION"
+            ],
+            "record_digest": "9b605b1c2ae576c9de524164fd6aff18a8e65014dc45fa4fa0fa98d6b2bacb3b",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "HIGH",
+            "verdict": "SUSPICIOUS"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xc0ec1db5eda9d6fb63dffab0c5eb1e9c41a8c8264d89b30ecada5a8890195002",
+            "votes": [
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x0562a450065689b44e7455b15d352d75e6c0ef4d4f2aeeb333e10b7e15a09ce5",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "test_id": "AT-000013"
+        },
+        {
+          "case_id": "A-14",
+          "decided_by": "CODE",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_INCONCLUSIVE",
+          "observed_indicators": [],
+          "observed_verdict": "INCONCLUSIVE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "MEDIUM",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "SATISFIED",
+                "PANEL"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "SATISFIED",
+                "PANEL"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "DOES_NOT_APPLY"
+              ],
+              [
+                "X2",
+                "DOES_NOT_APPLY"
+              ]
+            ],
+            "failure_class": "INSUFFICIENT_EVIDENCE",
+            "panel_reason": "",
+            "panel_state": "ASSESSED",
+            "present": [],
+            "reason_codes": [
+              "CRITERION:C4:UNVERIFIABLE"
+            ],
+            "record_digest": "b9c64faab87f9e1aeb729982bde9ce400ec4060df57d8a226d96b8bc832af57e",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "LOW",
+            "verdict": "INCONCLUSIVE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xd2cda24588e22247b739c7286c84fa3647f828e27975bb5bdd5a84d0ba5a918f",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xd3039d79612d66cabe8b505a0d1cd1d0b3580a68c009bd3579754f1b0693a68f",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000014"
+        },
+        {
+          "case_id": "A-15",
+          "decided_by": "CODE",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_UNAVAILABLE",
+          "observed_indicators": [],
+          "observed_verdict": "UNAVAILABLE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "LOW",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "EVIDENCE_UNREACHABLE",
+            "panel_reason": "EVIDENCE_NOT_EXAMINED",
+            "panel_state": "SKIPPED",
+            "present": [],
+            "reason_codes": [
+              "ROW:E6:UNAVAILABLE",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:EVIDENCE_NOT_EXAMINED"
+            ],
+            "record_digest": "ffae92f69de9576d17b3bb04308f053fd7019eb7d2b7558640d93a8d76ebba8a",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ],
+              [
+                "E5",
+                "EXAMINED"
+              ],
+              [
+                "E6",
+                "UNAVAILABLE"
+              ]
+            ],
+            "severity": "LOW",
+            "verdict": "UNAVAILABLE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x1474b7e1712279c91f08bc7a693fa2c7d8a3f17cfb60a229a510799b14076531",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x943a0a40c202c5969cedf6044d2d3de868d34285fbca62e138c574551ed01c64",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000015"
+        },
+        {
+          "case_id": "A-16",
+          "decided_by": "CODE",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_UNAVAILABLE",
+          "observed_indicators": [],
+          "observed_verdict": "UNAVAILABLE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "LOW",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "EVIDENCE_CHANGED",
+            "panel_reason": "EVIDENCE_NOT_EXAMINED",
+            "panel_state": "SKIPPED",
+            "present": [],
+            "reason_codes": [
+              "ROW:E3:HASH_MISMATCH",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:EVIDENCE_NOT_EXAMINED"
+            ],
+            "record_digest": "807af4bc86dbe6bbb46fbdf2373b278e0e8a61ca3ae0d9811f2590ad6441f650",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "EXAMINED"
+              ],
+              [
+                "E3",
+                "HASH_MISMATCH"
+              ],
+              [
+                "E4",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "LOW",
+            "verdict": "UNAVAILABLE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x62b9102c5a8e3c56c46a4d154e9bb4638b711cf6fc32b1257cf1f36ecba33f43",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x62b7403f745032f9019c82097353b2cb55e1bb38d23128fd3dc375551a58ccc7",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "IDLE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000016"
+        },
+        {
+          "case_id": "A-18",
+          "decided_by": "CODE",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_INCONCLUSIVE",
+          "observed_indicators": [],
+          "observed_verdict": "INCONCLUSIVE",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "LOW",
+            "criteria": [
+              [
+                "C1",
+                "SATISFIED",
+                "CODE"
+              ],
+              [
+                "C2",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C3",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C4",
+                "UNVERIFIABLE",
+                "CODE"
+              ],
+              [
+                "C5",
+                "UNVERIFIABLE",
+                "CODE"
+              ]
+            ],
+            "exclusions": [
+              [
+                "X1",
+                "UNVERIFIABLE"
+              ],
+              [
+                "X2",
+                "UNVERIFIABLE"
+              ]
+            ],
+            "failure_class": "EVIDENCE_MALFORMED",
+            "panel_reason": "EVIDENCE_NOT_EXAMINED",
+            "panel_state": "SKIPPED",
+            "present": [],
+            "reason_codes": [
+              "ROW:E2:UNPARSEABLE",
+              "EXCLUSION:X1:UNVERIFIABLE",
+              "EXCLUSION:X2:UNVERIFIABLE",
+              "CRITERION:C2:UNVERIFIABLE",
+              "CRITERION:C3:UNVERIFIABLE",
+              "CRITERION:C4:UNVERIFIABLE",
+              "CRITERION:C5:UNVERIFIABLE",
+              "PANEL:SKIPPED:EVIDENCE_NOT_EXAMINED"
+            ],
+            "record_digest": "f409c8cd85661fea0286d92dcc09599e0778d02c92fd4bdadd1dc6b975a53789",
+            "rows": [
+              [
+                "E1",
+                "EXAMINED"
+              ],
+              [
+                "E2",
+                "UNPARSEABLE"
+              ],
+              [
+                "E3",
+                "EXAMINED"
+              ]
+            ],
+            "severity": "LOW",
+            "verdict": "INCONCLUSIVE"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x334f10e650c931f4064511720f4dbc3ddc0d69e621b80dcd09b577d1be47e507",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x864c59e6334ddecd25c47335a8ef4699151093f2709d08b6362331a2a2731c5f",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "IDLE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000017"
+        },
+        {
+          "case_id": "A-19",
+          "decided_by": "ADMISSION",
+          "expected_indicators": [],
+          "expected_property": "VERDICT_REJECTED",
+          "observed_indicators": [],
+          "observed_verdict": "REJECTED",
+          "passed": true,
+          "receipt": {
+            "confidence_band": "HIGH",
+            "criteria": [],
+            "exclusions": [],
+            "failure_class": "NONE",
+            "panel_reason": "ADMISSION_REJECTED",
+            "panel_state": "SKIPPED",
+            "present": [],
+            "reason_codes": [
+              "ADMISSION:LATE_NOTICE"
+            ],
+            "record_digest": "2929a1083c18655a2dd54666a092135253c1d147ddb906b017bd0f3e5fd36c65",
+            "rows": [],
+            "severity": "MEDIUM",
+            "verdict": "REJECTED"
+          },
+          "register": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0x72329a3249086b0f13ada51df575f3588a732e34efc72601b0330427cff31d2a",
+            "votes": [
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE",
+              "IDLE"
+            ]
+          },
+          "run": {
+            "leader_execution": "SUCCESS",
+            "status": "FINALIZED",
+            "tx": "0xa663fa73c9486a6074b12e1b9bc445a4247c58d80ec76f00250172c6da8856e0",
+            "votes": [
+              "AGREE",
+              "IDLE",
+              "AGREE",
+              "AGREE",
+              "AGREE"
+            ]
+          },
+          "test_id": "AT-000018"
+        }
+      ]
+    }
+  },
+  "raw_base": "https://raw.githubusercontent.com/Hemmy1417/InsureShield/aa01aa225467f074b9adbbb15151002d4e319a6c/fixtures/",
+  "runs": [
+    {
+      "only": "T,R,C",
+      "started_at": "2026-09-11T00:59:46Z"
+    },
+    {
+      "finished_at": "2026-09-11T05:51:15Z",
+      "only": "C",
+      "started_at": "2026-09-11T05:48:07Z"
+    }
+  ],
+  "summary": {
+    "not_held": [],
+    "properties_held": 20,
+    "tests_run": 20
+  }
+}

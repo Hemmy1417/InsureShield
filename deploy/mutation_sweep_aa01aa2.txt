@@ -1,0 +1,116 @@
+110 mutations, 0 anchor problems
+accept-control: unmodified copy must pass ...
+control green
+
+killed:   hard facts no longer SUSPICIOUS
+killed:   hard facts outranked by an unreachable document
+killed:   unreachable document no longer UNAVAILABLE
+killed:   panel manipulation outranks an unreachable document
+killed:   changed document no longer UNAVAILABLE
+killed:   malformed document no longer INCONCLUSIVE
+killed:   unusable model output no longer INCONCLUSIVE
+killed:   panel manipulation indicator no longer SUSPICIOUS
+killed:   contradiction no longer INCONCLUSIVE
+killed:   contradiction outranked by an applying exclusion
+killed:   applying exclusion no longer REJECTED
+killed:   critical criterion unmet no longer REJECTED
+killed:   non-critical criterion unmet no longer INCONCLUSIVE
+killed:   undecided findings no longer INCONCLUSIVE
+killed:   undetermined indicators ignored
+killed:   policy amount limit not enforced
+killed:   coverage start not enforced
+killed:   coverage end not enforced
+killed:   late notice not enforced
+killed:   reporting window off by one
+killed:   line-item arithmetic not checked
+killed:   claim above the documented amount not flagged
+killed:   excluded invoice falls back to the estimate
+killed:   inflation computed over part of the invoices
+killed:   estimate tolerance ignored
+killed:   estimate overrun not flagged
+killed:   document predating the incident not flagged
+killed:   document postdating submission not flagged
+killed:   injection markers not scanned
+killed:   hard fact ABSENT over an unexamined document
+killed:   amount criterion computed over part of the record
+killed:   panel convened on a partial record
+killed:   panel convened despite a hard fact
+killed:   trusted-only criterion accepts any source
+killed:   semantic criterion with no eligible document asked anyway
+killed:   indicator eligibility ignored
+killed:   quotes not checked against the verified bytes
+killed:   quote fragments may appear out of order
+killed:   over-long quotes cut mid-word
+killed:   duplicate quotes kept
+killed:   a missing section makes the answer invalid
+killed:   an answer with no sections is accepted
+killed:   one-word quotes accepted
+killed:   quote words need not be contiguous
+SURVIVED: quotes from ineligible documents accepted
+killed:   model SATISFIED kept without a quote
+killed:   model APPLIES kept without a quote
+killed:   gate accepts SATISFIED without a quote
+killed:   gate accepts APPLIES without a quote
+killed:   gate accepts PRESENT without its quote rule
+killed:   quote rule ignores the number of documents
+killed:   quote rule ignores the document kind
+killed:   gate does not recompute code indicators
+killed:   validator ratifies without reproducing
+killed:   validator gates without its own bytes
+killed:   finding states not compared
+killed:   rows not compared
+killed:   facts not compared
+killed:   markers not compared
+killed:   panel state not compared
+killed:   transient leader errors ratified unconditionally
+killed:   model errors may be ratified
+killed:   boundary does not regate ratified text
+killed:   content hash not verified
+killed:   size bound removed
+killed:   HTTP status ignored
+killed:   structured schema not enforced
+killed:   non-integer amounts accepted
+killed:   booleans accepted as integers
+killed:   plain http accepted
+killed:   embedded credentials accepted
+killed:   unexpected ports accepted
+killed:   IP literals accepted
+killed:   localhost accepted
+killed:   internal names accepted
+killed:   dot-segments accepted
+killed:   encoded separators accepted
+killed:   fragments accepted
+killed:   trusted prefix need not end at a path boundary
+killed:   relocated document may change kind
+killed:   same document twice accepted
+killed:   same location twice accepted
+killed:   evidence maximum not enforced
+killed:   evidence minimum not enforced
+killed:   terminal claim resolvable again
+killed:   retry cooldown not enforced
+killed:   anyone may retry a claim
+killed:   rounds unbounded
+killed:   inconclusive made terminal
+killed:   claim reference replay accepted
+killed:   anyone may publish a policy version
+killed:   claims resolved under the latest version, not their own
+killed:   non-VALID verdicts consumable
+killed:   later duplicate still consumable
+killed:   receipt validity not enforced
+killed:   freshness asserted before the receipt existed
+killed:   unavailable evidence reported fresh
+killed:   a claim is its own duplicate
+killed:   own cancelled claim counts as a duplicate
+killed:   cancel-and-resubmit launders a judged claim
+killed:   ownership records flagged as duplicates
+killed:   relabelling a reused invoice escapes
+killed:   document numbers not normalized
+killed:   document numbers ordered by resolution
+killed:   registry keeps the first resolver, not the earliest commitment
+killed:   safety property always holds
+killed:   expected indicator ignored
+killed:   a test may run twice
+killed:   definition key set not enforced
+killed:   trusted-only criterion without a trusted source
+
+mutations: 109 killed, 1 survived, 0 anchor missing

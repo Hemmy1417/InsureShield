@@ -63,8 +63,8 @@ def log(*parts):
 
 def save():
     OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text(json.dumps(TRANSCRIPT, indent=2, sort_keys=True) + "\n",
-                   encoding="utf-8", newline="\n")
+    OUT.write_text(json.dumps(TRANSCRIPT, indent=2, sort_keys=True, default=str)
+                   + "\n", encoding="utf-8", newline="\n")
 
 
 def die(message: str):
@@ -334,6 +334,7 @@ def phase_claims(actors: dict, raw: str, policy_id: str) -> dict:
     claimant, fraudster, stranger = actors["claimant"], actors["fraudster"], actors["stranger"]
     log("\nPHASE C - real claims on policy v3")
     phase = {}
+    TRANSCRIPT["phases"]["C"] = phase      # saved after every step below
     tag = time.strftime("%m%d%H%M", time.gmtime())
 
     claim_id, phase["legit_submit"] = submit(claimant, policy_id, CASES["L-01"], raw,
@@ -344,11 +345,13 @@ def phase_claims(actors: dict, raw: str, policy_id: str) -> dict:
     phase["legit_outcome"] = claimant.read("claim_outcome", [claim_id, now])
     log(f"    outcome: {phase['legit_outcome']}")
     phase["refusal_resolve_twice"] = stranger.write("resolve_claim", [claim_id], expect="ERROR")
+    save()
 
     dup_id, phase["duplicate_submit"] = submit(fraudster, policy_id, CASES["L-01"], raw,
                                                "LIVE-DUP-" + tag)
     phase["duplicate_claim_id"] = dup_id
     phase["duplicate_resolve"] = resolve(stranger, dup_id)
+    save()
     receipt = phase["duplicate_resolve"]["receipt"]
     if receipt["verdict"] != "SUSPICIOUS" or "DUPLICATE_EVIDENCE" not in receipt["present"]:
         die("the duplicate claim should be SUSPICIOUS via the registry")
@@ -359,20 +362,156 @@ def phase_claims(actors: dict, raw: str, policy_id: str) -> dict:
                                                   "LIVE-L02-" + tag, {5: dead})
     phase["relocation_claim_id"] = retry_id
     phase["relocation_round_1"] = resolve(stranger, retry_id)
+    save()
     receipt = phase["relocation_round_1"]["receipt"]
     if receipt["verdict"] != "UNAVAILABLE" or \
             phase["relocation_round_1"]["claim_status"] != "RETRYABLE":
         die("the unreachable photo log should leave the claim UNAVAILABLE and RETRYABLE")
     phase["refusal_stranger_retries"] = fraudster.write(
         "retry_claim", [retry_id, [], [], []], expect="ERROR")
+    save()
     log("    waiting out the retry cooldown (policy: 60 s)")
     time.sleep(75)
     photo = entry["claim"]["evidence"][5]
+    finish_relocation(phase, claimant, stranger, raw, retry_id, entry)
+    return phase
+
+
+def finish_relocation(phase: dict, claimant, stranger, raw: str, retry_id: str,
+                      entry: dict):
+    photo = entry["claim"]["evidence"][5]
     phase["relocation_retry"] = claimant.write("retry_claim", [
         retry_id, [photo["kind"]], [raw + photo["file"]], [sha(photo["file"])]])
+    save()
     phase["relocation_round_2"] = resolve(stranger, retry_id)
     TRANSCRIPT["phases"]["C"] = phase
     save()
+
+
+def chain_history(address: str) -> list:
+    """Every transaction sent to the contract, from the network's own
+    record (sim_getTransactionsForAddress), oldest first: method and
+    arguments decoded from the calldata, sender, lifecycle status, leader
+    execution result and validator votes."""
+    import base64
+    from genlayer_py.abi import calldata
+    body = json.dumps({"jsonrpc": "2.0", "id": 1,
+                       "method": "sim_getTransactionsForAddress",
+                       "params": [address]}).encode()
+
+    def fetch():
+        request = urllib.request.Request(
+            "https://studio.genlayer.com/api", data=body,
+            headers={"Content-Type": "application/json",
+                     "User-Agent": "insureshield-live"})
+        with urllib.request.urlopen(request, timeout=60) as response:
+            return json.loads(response.read().decode())["result"]
+
+    out = []
+    for t in retry(fetch):
+        raw = (t.get("data") or {}).get("calldata")
+        try:
+            call = calldata.decode(base64.b64decode(raw)) if raw else {}
+        except Exception:                 # noqa: BLE001 - the deploy has no call
+            call = {}
+        call = call if isinstance(call, dict) else {}
+        consensus = t.get("consensus_data") or {}
+        leader = consensus.get("leader_receipt") or [{}]
+        out.append({
+            "tx": t.get("hash"), "method": call.get("method", "(deploy)"),
+            "args": call.get("args"), "from": t.get("from_address"),
+            "status": t.get("status"),
+            "leader_execution": str(leader[0].get("execution_result")),
+            "votes": [str(v).upper() for v in (consensus.get("votes") or {}).values()],
+            "created_at": t.get("created_at"),
+        })
+    return sorted(out, key=lambda r: str(r["created_at"]))
+
+
+def recover_claims(actors: dict, raw: str, policy_id: str) -> dict:
+    """Rebuild phase C's records from the chain after an interrupted run,
+    then perform whatever step had not been sent. The records come from the
+    network's transaction history and the contract's views - not from logs."""
+    claimant, fraudster, stranger = actors["claimant"], actors["fraudster"], actors["stranger"]
+    log("\nPHASE C - recovering the interrupted run's records from the chain")
+    history = chain_history(claimant.address)
+    roles = {a.me.lower(): role for role, a in actors.items()}
+    TRANSCRIPT["phases"]["C"] = phase = {
+        "recovered_from_chain": True,
+        "recovery_note": ("The first run stopped when the StudioNet RPC stopped "
+                          "accepting connections for several minutes, before "
+                          "the relocation retry was sent. These records were "
+                          "rebuilt from sim_getTransactionsForAddress and the "
+                          "contract views; the remaining steps ran after."),
+    }
+
+    def pick(method, role, first_arg=None, result=None, prefix=None):
+        for r in history:
+            if r["method"] != method or roles.get(str(r["from"]).lower()) != role:
+                continue
+            args = r["args"] or []
+            if first_arg is not None and (not args or args[0] != first_arg):
+                continue
+            if prefix is not None and (len(args) < 2 or not str(args[1]).startswith(prefix)):
+                continue
+            if result is not None and r["leader_execution"] != result:
+                continue
+            return {k: r[k] for k in ("tx", "status", "leader_execution", "votes",
+                                      "created_at")}
+        die(f"no {method} by {role} found on chain")
+
+    def claim_by_reference(prefix):
+        total = claimant.read("get_stats", [])["claims"]
+        for n in range(1, total + 1):
+            claim_id = "CLM-" + str(n).zfill(6)
+            if claimant.read("get_claim", [claim_id])["claim_reference"].startswith(prefix):
+                return claim_id
+        die(f"no claim with reference {prefix}*")
+
+    def resolved(claim_id, round_index, role="stranger"):
+        view = claimant.read("get_claim", [claim_id])
+        rounds = [r for r in history if r["method"] == "resolve_claim"
+                  and (r["args"] or [None])[0] == claim_id
+                  and r["leader_execution"] == "SUCCESS"]
+        record = {k: rounds[round_index][k] for k in ("tx", "status", "leader_execution",
+                                                      "votes", "created_at")}
+        record["receipt"] = summarize(claimant.read(
+            "get_receipt", [view["receipt_ids"][round_index]]))
+        return record
+
+    legit = claim_by_reference("LIVE-L01-")
+    phase["legit_claim_id"] = legit
+    phase["legit_submit"] = pick("submit_claim", "claimant", prefix="LIVE-L01-")
+    phase["legit_resolve"] = resolved(legit, 0)
+    now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    phase["legit_outcome"] = claimant.read("claim_outcome", [legit, now])
+    phase["legit_outcome_read_at"] = now
+    phase["refusal_resolve_twice"] = pick("resolve_claim", "stranger", legit, "ERROR")
+
+    dup = claim_by_reference("LIVE-DUP-")
+    phase["duplicate_claim_id"] = dup
+    phase["duplicate_submit"] = pick("submit_claim", "fraudster", prefix="LIVE-DUP-")
+    phase["duplicate_resolve"] = resolved(dup, 0)
+    receipt = phase["duplicate_resolve"]["receipt"]
+    if receipt["verdict"] != "SUSPICIOUS" or "DUPLICATE_EVIDENCE" not in receipt["present"]:
+        die("the duplicate claim should be SUSPICIOUS via the registry")
+
+    moved = claim_by_reference("LIVE-L02-")
+    phase["relocation_claim_id"] = moved
+    phase["relocation_submit"] = pick("submit_claim", "claimant", prefix="LIVE-L02-")
+    phase["relocation_round_1"] = resolved(moved, 0)
+    phase["relocation_round_1"]["claim_status"] = "RETRYABLE"
+    if phase["relocation_round_1"]["receipt"]["verdict"] != "UNAVAILABLE":
+        die("the unreachable photo log should have been UNAVAILABLE")
+    phase["refusal_stranger_retries"] = pick("retry_claim", "fraudster", moved, "ERROR")
+    save()
+    log(f"    recovered {legit}, {dup}, {moved} and three refusals from the chain")
+
+    view = claimant.read("get_claim", [moved])
+    if view["status"] == "RETRYABLE":
+        finish_relocation(phase, claimant, stranger, raw, moved, copy.deepcopy(CASES["L-02"]))
+    else:
+        log(f"    {moved} is already {view['status']}; nothing left to send")
     return phase
 
 
@@ -381,6 +520,8 @@ def main():
     parser.add_argument("address")
     parser.add_argument("--raw-base", required=True)
     parser.add_argument("--only", default="T,R,C")
+    parser.add_argument("--recover", action="store_true",
+                        help="rebuild phase C from the chain and finish it")
     args = parser.parse_args()
     raw = args.raw_base if args.raw_base.endswith("/") else args.raw_base + "/"
     if OUT.exists():
@@ -406,7 +547,9 @@ def main():
         die("phase T must run first (it creates the policy)")
     if "R" in wanted:
         phase_rules(actors, raw, phase_t["policy_id"], phase_t["tests"])
-    if "C" in wanted:
+    if "C" in wanted and args.recover:
+        recover_claims(actors, raw, phase_t["policy_id"])
+    elif "C" in wanted:
         phase_claims(actors, raw, phase_t["policy_id"])
     tests = TRANSCRIPT["phases"]["T"]["tests"] + \
         TRANSCRIPT["phases"].get("R", {}).get("on_v3", [])

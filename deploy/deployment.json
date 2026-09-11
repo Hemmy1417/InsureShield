@@ -1,0 +1,38 @@
+{
+  "byte_identical": true,
+  "chain_id": 61999,
+  "contract_address": "0x638f5610288d292Fac9DfdD53d094Da0c38c5299",
+  "deploy_tx": "0xda9d6f05d38e1545e4d846d46829d5c229ea3df7de93f38c3312d06861901654",
+  "deployed_at": "2026-09-11T00:56:52Z",
+  "deployed_sha256": "a0878565b63f72433dcba3819509e3318219dc64ab145aac18a40796ee29497b",
+  "explorer": "https://explorer-studio.genlayer.com",
+  "explorer_contract": "https://explorer-studio.genlayer.com/address/0x638f5610288d292Fac9DfdD53d094Da0c38c5299",
+  "explorer_tx": "https://explorer-studio.genlayer.com/tx/0xda9d6f05d38e1545e4d846d46829d5c229ea3df7de93f38c3312d06861901654",
+  "head_at_deploy": "255d4be4db2ff6e1ac5466f386da75d1eb151d11",
+  "leader_execution": "SUCCESS",
+  "network": "studionet",
+  "other_addresses": {
+    "disposable_diagnostic_run1": "0xA5128d12983a0517936536B43041B811af0174A3",
+    "disposable_diagnostic_run2": "0xee892d1CeF312d92116d1b0D96BF56cCb2218ab6",
+    "disposable_diagnostic_run3": "0xecB86fE91c1BE0CDC505900755a289f83FdD0017",
+    "disposable_smoke_41ffdc5": "0xe2364ea8249d8a349c0103FcA0dF132108932dFd",
+    "live_claimant": "0xd70f1b2C854c59FAC169a48Fb1C4C498317F729F",
+    "live_fraudster": "0x01616e67A18386118c11861A1bb9a229987423B8",
+    "live_insurer": "0xD65227b44f24099AF4758F0B89d6AA7904021A4b",
+    "live_stranger": "0xC19769fae025bDb860689861B87C18Ed611443CE",
+    "signer": "0x4CF07DDa95ecfC36ed1Ef7970F94c73BEB9cAdDf"
+  },
+  "rpc": "https://studio.genlayer.com/api",
+  "signer": "0x4CF07DDa95ecfC36ed1Ef7970F94c73BEB9cAdDf",
+  "source_blob": "6486d8ca0c5e4cc6ca5cf3b54da93ce9347a0f63",
+  "source_commit": "aa01aa225467f074b9adbbb15151002d4e319a6c",
+  "source_sha256": "a0878565b63f72433dcba3819509e3318219dc64ab145aac18a40796ee29497b",
+  "status": "FINALIZED",
+  "votes": [
+    "AGREE",
+    "AGREE",
+    "AGREE",
+    "AGREE",
+    "AGREE"
+  ]
+}
